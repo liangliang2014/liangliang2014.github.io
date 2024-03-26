@@ -35,10 +35,10 @@ tags:
 | 列出目录下的文件 | `$ ll` |
 | 新建 Project | `$ npm init` |
 | 安装依赖 | `$ npm install [-S] <pkg-name>` |
-| 安装 `trash` 命令 | `$ npm install -g trash-cli` |
-| 把文件丢入废纸篓 | `$ trash <file>` |
+| 例：安装 `trash` 命令 | `$ npm install -g trash-cli` |
+| 例：把文件丢入废纸篓 | `$ trash <file>` |
 
-### 三、编程语言
+### 编程语言
 
 我学会了一门编程语言：JavaScript。
 
