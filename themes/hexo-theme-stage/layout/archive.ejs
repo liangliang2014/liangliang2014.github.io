@@ -1,6 +1,8 @@
 <div class="clearfix">
     <div id="archive">
-        <h1><%= page.month + '/' + page.year %></h1>
+        <% if (page.year && page.month) { %>
+            <h1><%= page.year + '/' + page.month %></h1>
+        <% } %>
         <% page.posts.each(function(article) { %>
         <div class="item">
             <h3>

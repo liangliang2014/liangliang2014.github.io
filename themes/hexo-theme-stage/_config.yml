@@ -16,6 +16,8 @@ social:
 about:
   enable: false
   comment: true
+tags:
+  enable: false
 
 # awesome sentences
 sentences:
