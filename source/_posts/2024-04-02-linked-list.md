@@ -24,7 +24,7 @@ node2.next = node3
 
 ### 创建
 
-```
+```javascript
 let a = ['苹果', '橘子', '香蕉']
 
 function f(x) {
