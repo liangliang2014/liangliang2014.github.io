@@ -25,7 +25,7 @@ b = 2
 
 ### 更多循环
 
-#### do、while 循环
+#### while 循环、do 循环
 
 -  条件满足时，进行循环
 
@@ -45,7 +45,7 @@ do {
 
 #### 循环控制
 
-各种循环结构都可以，例如 `for` `while`
+各种循环结构都可以，例如 `for`、`while`
 
 - 退出循环
 
@@ -114,6 +114,5 @@ while (a < 10)
 - 跟 `while` 放在一行
 
 ```javascript
-while (a < 10)
-  console.log(a)
+while (a < 10) console.log(a)
 ```
