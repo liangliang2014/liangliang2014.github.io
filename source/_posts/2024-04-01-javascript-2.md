@@ -116,3 +116,29 @@ while (a < 10)
 ```javascript
 while (a < 10) console.log(a)
 ```
+
+### 真假值
+
+- 假值：`0`、`''`、`NaN`、`null`、`false`、`undefined`
+- 真值：其他都为真值
+
+| 情况 | 相等性 |
+| --- | --- |
+| `NaN` | 连自身都不 `==`（`NaN != NaN`） |
+| `null`、`undefined` | 这两个互相 `==`（`null == undefined`） |
+| `0`、`''`、`false` | 这三个互相 `==`（`0 == '' == false`） |
+
+#### 示例
+
+```javascript
+// NaN
+console.log(NaN != NaN)        // true
+
+// null、undefined
+console.log(null == undefined) // true
+
+// 0、''、false
+console.log(0 == '')           // true
+console.log(0 == false)        // true
+console.log(false == '')       // true
+```
