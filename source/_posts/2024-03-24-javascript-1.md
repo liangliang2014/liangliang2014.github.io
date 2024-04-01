@@ -1,5 +1,5 @@
 ---
-title: JavsScript 小结
+title: JavsScript 入门（1）
 date: 2024-03-24
 categories: programming
 tags: 
@@ -9,7 +9,7 @@ tags:
 
 最近我学了一门编程语言：[JavaScript](https://ecma-international.org/publications-and-standards/standards/ecma-262/)。
 
-### 打印内容
+### 输出内容
 
 ```javascript
 console.log(100)
