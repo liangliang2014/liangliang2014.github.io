@@ -31,7 +31,7 @@ b = 2
 
 ```javascript
 while (a < 10) {
-
+  ...
 }
 ```
 
@@ -39,7 +39,7 @@ while (a < 10) {
 
 ```javascript
 do {
-
+  ...
 } while (a < 10)
 ```
 
