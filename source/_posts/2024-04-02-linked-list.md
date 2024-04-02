@@ -18,6 +18,7 @@ node1.next = node2
 node2.next = node3
 
 // node1 -> node2 -> node3
+let head = node1
 ```
 
 ### 链表操作
@@ -43,18 +44,38 @@ function f(x) {
     u.next = v
   }
 
-  return s[0]
+  let head = s[0]
+  return head
 }
 
-let l = f(a)
+let head = f(a)
 ```
 
 ### 遍历
 
-### 查询
-
-### 插入
-
-### 删除
+```javascript
+let c = head
+while (c != null) {
+  console.log(c.value)
+  c = c.next
+}
+```
 
 ### 反转
+
+```javascript
+function f(head) {
+  let a = null
+  let b = head
+  while (b != null) {
+    let n = b.next
+    b.next = a
+
+    a = b
+    b = n
+  }
+  return a
+}
+
+let r = f(head)
+```
