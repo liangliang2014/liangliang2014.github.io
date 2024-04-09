@@ -12,7 +12,7 @@
                     <%- truncate(strip_html(article.title), {length: 57, omission: '...'}) %>
                 </a>
                 <% } else { %>
-                <a href="<%= url_for(article.path) %>">
+                <a href="<%= url_for(article.path) %>" target="_blank">
                     <%- truncate(strip_html(article.title), {length: 57, omission: '...'}) %>
                 </a>
                 <% } %>
