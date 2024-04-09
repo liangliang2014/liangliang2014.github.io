@@ -1,5 +1,5 @@
 ---
-title: 链表
+title: JavsScript 入门（8）：链表
 date: 2024-04-02
 tags:
 - javascript

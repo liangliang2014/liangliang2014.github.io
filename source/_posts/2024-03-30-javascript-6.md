@@ -1,12 +1,13 @@
 ---
-title: 集合与哈希表
+title: JavsScript 入门（6）：集合与哈希表
 date: 2024-03-30
 categories: programming
 tags: 
+- javascript
+- data-structure
 - set
 - map
 - hash-table
-- data-structure
 ---
 
 ### JavaScript 中的集合

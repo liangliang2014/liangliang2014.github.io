@@ -1,11 +1,12 @@
 ---
-title: 栈和队列
+title: JavsScript 入门（5）：栈和队列
 date: 2024-03-29
 categories: programming
 tags: 
+- javascript
+- data-structure
 - stack
 - queue
-- data-structure
 ---
 
 ### JavaScript 中的数组操作

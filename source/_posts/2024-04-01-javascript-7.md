@@ -1,10 +1,10 @@
 ---
-title: JavaScript 入门（2）
+title: JavsScript 入门（7）：while、省略花括号、真假值
 date: 2024-04-01
 categories: programming
 tags: 
 - javascript
-- language
+- syntax
 ---
 
 ### 一次定义多个变量

@@ -1,8 +1,9 @@
 ---
-title: JavaScript 语法练习（小结）
+title: JavsScript 入门（2）：编码练习
 date: 2024-03-25
 categories: programming
 tags: 
+- javascript
 - coding
 ---
 

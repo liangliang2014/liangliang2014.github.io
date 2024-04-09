@@ -1,9 +1,10 @@
 ---
-title: 树
+title: JavsScript 入门（9）：树
 date: 2024-04-07
 tags:
-- tree
+- javascript
 - data-structure
+- tree
 ---
 
 ### 树的节点

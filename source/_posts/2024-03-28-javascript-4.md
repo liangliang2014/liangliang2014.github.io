@@ -1,9 +1,10 @@
 ---
-title: 函数的调用栈（详解）
+title: JavsScript 入门（4）：函数调用栈
 date: 2024-03-28
 categories: programming
 tags: 
 - javascript
+- syntax
 - function
 - call-stack
 ---
