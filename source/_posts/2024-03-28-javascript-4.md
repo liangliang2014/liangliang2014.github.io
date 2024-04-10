@@ -2,7 +2,7 @@
 title: JavaScript 入门（4）：函数调用栈
 date: 2024-03-28
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags: 
 - function
 - call-stack

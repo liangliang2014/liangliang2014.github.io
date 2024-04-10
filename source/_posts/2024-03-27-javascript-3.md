@@ -2,7 +2,7 @@
 title: JavaScript 入门（3）：排序算法
 date: 2024-03-27
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags: 
 - algorithm
 - selection-sort

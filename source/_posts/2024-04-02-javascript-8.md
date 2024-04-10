@@ -2,7 +2,7 @@
 title: JavaScript 入门（8）：链表
 date: 2024-04-02
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags:
 - data-structure
 - linked-list

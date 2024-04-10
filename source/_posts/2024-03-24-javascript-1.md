@@ -2,7 +2,7 @@
 title: JavaScript 入门（1）：变量、控制结构、数组、对象、函数
 date: 2024-03-24
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags: 
 - variable
 - if
@@ -12,7 +12,7 @@ tags:
 - function
 ---
 
-最近我学了一门编程语言：[JavaScript](https://ecma-international.org/publications-and-standards/standards/ecma-262/)。
+最近我学了一门编程语言：[javascript](https://ecma-international.org/publications-and-standards/standards/ecma-262/)。
 
 ### 输出内容
 

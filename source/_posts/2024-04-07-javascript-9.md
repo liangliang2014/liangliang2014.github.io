@@ -2,7 +2,7 @@
 title: JavaScript 入门（9）：树
 date: 2024-04-07
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags:
 - data-structure
 - tree

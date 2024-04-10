@@ -2,7 +2,7 @@
 title: JavaScript 入门（2）：编码练习
 date: 2024-03-25
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags: 
 - sum
 - guess-number

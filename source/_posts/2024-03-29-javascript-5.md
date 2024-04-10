@@ -2,7 +2,7 @@
 title: JavaScript 入门（5）：栈和队列
 date: 2024-03-29
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags: 
 - data-structure
 - stack

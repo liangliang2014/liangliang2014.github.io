@@ -2,7 +2,7 @@
 title: JavaScript 入门（6）：集合与哈希表
 date: 2024-03-30
 categories:
-- [Programming, JavaScript]
+- [programming, javascript]
 tags: 
 - data-structure
 - set
