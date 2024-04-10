@@ -1,10 +1,15 @@
 ---
-title: JavsScript 入门（1）：变量、控制结构、数组、对象、函数
+title: JavaScript 入门（1）：变量、控制结构、数组、对象、函数
 date: 2024-03-24
-categories: programming
+categories:
+- [Programming, JavaScript]
 tags: 
-- javascript
-- syntax
+- variable
+- if
+- for
+- array
+- object
+- function
 ---
 
 最近我学了一门编程语言：[JavaScript](https://ecma-international.org/publications-and-standards/standards/ecma-262/)。

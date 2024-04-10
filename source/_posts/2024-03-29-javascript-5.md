@@ -1,9 +1,9 @@
 ---
-title: JavsScript 入门（5）：栈和队列
+title: JavaScript 入门（5）：栈和队列
 date: 2024-03-29
-categories: programming
+categories:
+- [Programming, JavaScript]
 tags: 
-- javascript
 - data-structure
 - stack
 - queue

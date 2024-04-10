@@ -1,8 +1,9 @@
 ---
-title: JavsScript 入门（9）：树
+title: JavaScript 入门（9）：树
 date: 2024-04-07
+categories:
+- [Programming, JavaScript]
 tags:
-- javascript
 - data-structure
 - tree
 ---

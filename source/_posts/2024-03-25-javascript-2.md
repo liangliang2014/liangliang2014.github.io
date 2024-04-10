@@ -1,10 +1,14 @@
 ---
-title: JavsScript 入门（2）：编码练习
+title: JavaScript 入门（2）：编码练习
 date: 2024-03-25
-categories: programming
+categories:
+- [Programming, JavaScript]
 tags: 
-- javascript
-- coding
+- sum
+- guess-number
+- chickens-rabbits-problem
+- perfect-number
+- max
 ---
 
 ### 从 1 加到 100

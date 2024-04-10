@@ -1,12 +1,12 @@
 ---
-title: JavsScript 入门（4）：函数调用栈
+title: JavaScript 入门（4）：函数调用栈
 date: 2024-03-28
-categories: programming
+categories:
+- [Programming, JavaScript]
 tags: 
-- javascript
-- syntax
 - function
 - call-stack
+- recursion
 ---
 
 ### 函数定义

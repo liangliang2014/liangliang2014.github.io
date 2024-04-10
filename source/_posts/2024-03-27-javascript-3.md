@@ -1,11 +1,12 @@
 ---
-title: JavsScript 入门（3）：排序算法
+title: JavaScript 入门（3）：排序算法
 date: 2024-03-27
-categories: programming
+categories:
+- [Programming, JavaScript]
 tags: 
-- javascript
 - algorithm
-- sort
+- selection-sort
+- quick-sort
 ---
 
 我学了一些排序算法。

@@ -1,9 +1,9 @@
 ---
-title: JavsScript 入门（6）：集合与哈希表
+title: JavaScript 入门（6）：集合与哈希表
 date: 2024-03-30
-categories: programming
+categories:
+- [Programming, JavaScript]
 tags: 
-- javascript
 - data-structure
 - set
 - map
