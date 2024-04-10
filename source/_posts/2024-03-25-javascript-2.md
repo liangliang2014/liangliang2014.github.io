@@ -1,6 +1,6 @@
 ---
 title: JavaScript 入门（2）：编码练习
-date: 2024-03-25
+date: 2024-03-25 18:00:00
 categories:
 - [programming, javascript]
 tags: 

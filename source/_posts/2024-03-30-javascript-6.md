@@ -1,6 +1,6 @@
 ---
 title: JavaScript 入门（6）：集合与哈希表
-date: 2024-03-30
+date: 2024-03-30 18:00:00
 categories:
 - [programming, javascript]
 tags: 

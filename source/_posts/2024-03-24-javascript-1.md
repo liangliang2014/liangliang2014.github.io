@@ -1,6 +1,6 @@
 ---
 title: JavaScript 入门（1）：变量、控制结构、数组、对象、函数
-date: 2024-03-24
+date: 2024-03-24 18:00:00
 categories:
 - [programming, javascript]
 tags: 
