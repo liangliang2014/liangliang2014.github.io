@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 入门（2）：编码练习 | 我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="从 1 加到 10012345let a = 1for (let i = 2; i &amp;lt;= 100; i++) &amp;#123;  a = a + i&amp;#125;console.log(a)
+
+猜数字
+一个数除以 3 余 2，除以 4 余 3，除以 5 刚好除尽，这个数是几？
+
+12345for (let i = 1; i &amp;lt;= 100; i++) &amp;#123;  if (i % 3 == 2 &amp;amp;&amp;amp; i % 4 == 3 &amp;amp;&amp;amp; i % 5 == 0) &amp;#123;    console.log(i)  &amp;#125;&amp;#125;
+
+鸡兔同笼问题
+46 个头，128 只脚，请问鸡和兔分别...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            云里写诗，泥里生活，岁月里洒脱。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>JavaScript 入门（2）：编码练习</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2024-03-24T16:00:00.000Z">
+                    2024-03-25
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+        </div>
+        <h3 id="从-1-加到-100"><a href="#从-1-加到-100" class="headerlink" title="从 1 加到 100"></a>从 1 加到 100</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">  a = a + i</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜数字"><a href="#猜数字" class="headerlink" title="猜数字"></a>猜数字</h3><blockquote>
+<p>一个数除以 3 余 2，除以 4 余 3，除以 5 刚好除尽，这个数是几？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">2</span> &amp;&amp; i % <span class="number">4</span> == <span class="number">3</span> &amp;&amp; i % <span class="number">5</span> == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鸡兔同笼问题"><a href="#鸡兔同笼问题" class="headerlink" title="鸡兔同笼问题"></a>鸡兔同笼问题</h3><blockquote>
+<p>46 个头，128 只脚，请问鸡和兔分别有多少只？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">1000</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= <span class="number">1000</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">let</span> heads = i + j</span><br><span class="line">    <span class="keyword">let</span> feet = i * <span class="number">2</span> + j * <span class="number">4</span></span><br><span class="line">    <span class="keyword">if</span> (heads == <span class="number">46</span> &amp;&amp; feet == <span class="number">128</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(i, j)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="求解完全数"><a href="#求解完全数" class="headerlink" title="求解完全数"></a>求解完全数</h3><blockquote>
+<p>一个数的因数和等于自身，这个数可能是 6，28，下一个数是多少？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">10000</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % j == <span class="number">0</span>) &#123;</span><br><span class="line">      x = x + j</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (i == x) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="找出数组中的最大值"><a href="#找出数组中的最大值" class="headerlink" title="找出数组中的最大值"></a>找出数组中的最大值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">13</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">34</span>, <span class="number">16</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = x[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (b &lt; x[i]) &#123;</span><br><span class="line">      b = x[i]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r = <span class="title function_">f</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(r)</span><br></pre></td></tr></table></figure>
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/chickens-rabbits-problem/" rel="tag">chickens-rabbits-problem</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/guess-number/" rel="tag">guess-number</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/max/" rel="tag">max</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/perfect-number/" rel="tag">perfect-number</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/sum/" rel="tag">sum</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2024/03/26/2024-03-26-git/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                提交代码
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2024/03/24/2024-03-24-javascript-1/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        JavaScript 入门（1）：变量、控制结构、数组、对象、函数
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E-1-%E5%8A%A0%E5%88%B0-100"><span class="toc-number">1.</span> <span class="toc-text">从 1 加到 100</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8C%9C%E6%95%B0%E5%AD%97"><span class="toc-number">2.</span> <span class="toc-text">猜数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">鸡兔同笼问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3%E5%AE%8C%E5%85%A8%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">求解完全数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">5.</span> <span class="toc-text">找出数组中的最大值</span></a></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

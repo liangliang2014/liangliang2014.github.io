@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 入门（4）：函数调用栈 | 我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="函数定义123function f(x) &amp;#123;  ...&amp;#125;
+
+
+定义了一个名字为 f 的 函数，函数 f 的 形参 名字为 x
+&amp;#123; ... &amp;#125; 花括号包围的部分，是函数 f 的 函数体
+
+函数的返回值1234function f(x) &amp;#123;  ...  return 1&amp;#125;
+
+
+函数使用 return 语句 返回值
+如果函数体中写了 return 1 语句，那么函数的返回值，就是 return 后面的值 1
+如果函数体中没有写 return，或者 return 后面没有值，那就是 return undefined
+
+1234function f(x) &amp;#123;  ...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>JavaScript 入门（4）：函数调用栈</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2024-03-27T16:00:00.000Z">
+                    2024-03-28
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+        </div>
+        <h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义了一个名字为 <code>f</code> 的 <strong>函数</strong>，函数 <code>f</code> 的 <strong>形参</strong> 名字为 <code>x</code></li>
+<li><code>&#123; ... &#125;</code> 花括号包围的部分，是函数 <code>f</code> 的 <strong>函数体</strong></li>
+</ul>
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数使用 <code>return</code> 语句 <strong>返回值</strong></li>
+<li>如果函数体中写了 <code>return 1</code> 语句，那么函数的返回值，就是 <code>return</code> 后面的值 <code>1</code></li>
+<li>如果函数体中没有写 <code>return</code>，或者 <code>return</code> 后面没有值，那就是 <code>return undefined</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// return undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span>  <span class="comment">// return undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数的调用和返回"><a href="#函数的调用和返回" class="headerlink" title="函数的调用和返回"></a>函数的调用和返回</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(<span class="number">0</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先定义了一个函数 <code>f</code></li>
+<li>…</li>
+<li>执行 <code>let b = f(0)</code>。<code>f(0)</code> 调用函数 <code>f</code>，程序会记住这个 <strong>位置</strong> <code>let b = f(0)</code><ul>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>0</code>（相当于 进入了一个 <strong>房间</strong>，房间里已经有了 <code>let x = 0</code>）</li>
+<li>…</li>
+<li><code>return 1</code> 表明函数 <code>f</code> 返回了，返回值是 <code>1</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间</strong> 里退出，回到记住的 <strong>位置</strong> <code>let b = f(0)</code>，接着向下执行</li>
+<li>变量 <code>b</code> 被赋值为 <code>f(0)</code> 的返回值 <code>1</code></li>
+<li>…</li>
+</ul>
+<h3 id="一个函数调用多次"><a href="#一个函数调用多次" class="headerlink" title="一个函数调用多次"></a>一个函数调用多次</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b1 = <span class="title function_">f</span>(<span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b2 = <span class="title function_">f</span>(<span class="number">2</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先定义了一个函数 <code>f</code></li>
+<li>…</li>
+<li>执行 <code>let b1 = f(1)</code>。<code>f(1)</code> 调用函数 <code>f</code>，程序会记住这个 <strong>位置</strong> <code>let b1 = f(1)</code><ul>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>1</code>（进入一个 <strong>房间</strong>，房间里已经有了 <code>let x = 1</code>）</li>
+<li>…</li>
+<li><code>return x</code> 表明函数 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>1</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间</strong> 里退出，回到记住的 <strong>位置</strong> <code>let b1 = f(1)</code>，接着向下执行</li>
+<li>变量 <code>b1</code> 被赋值为 <code>f(1)</code> 的返回值 <code>1</code></li>
+<li>…</li>
+<li>执行 <code>let b2 = f(2)</code>。<code>f(2)</code> 调用函数 <code>f</code>，程序会记住这个 <strong>位置</strong> <code>let b2 = f(2)</code><ul>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>2</code>（进入一个 <strong>房间</strong>，房间里已经有了 <code>let x = 2</code>）</li>
+<li>…</li>
+<li><code>return x</code> 表明函数 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>2</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间</strong> 里退出，回到记住的 <strong>位置</strong> <code>let b2 = f(2)</code>，接着向下执行</li>
+<li>变量 <code>b2</code> 被赋值为 <code>f(2)</code> 的返回值 <code>2</code></li>
+<li>…</li>
+</ul>
+<h3 id="一个函数有多个参数"><a href="#一个函数有多个参数" class="headerlink" title="一个函数有多个参数"></a>一个函数有多个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数可以接受多个参数 <code>x</code>，<code>y</code>，函数调用时，可以传入多个实参 <code>0</code>，<code>1</code></li>
+<li><code>f(0,1)</code> 调用时，形参 <code>x</code> 被赋值为 <code>0</code>，形参 <code>y</code> 被赋值为 <code>1</code>（进入一个房间，房间里已经有了 <code>let x=0,y=1</code>）</li>
+</ul>
+<h3 id="一个函数调用另一个函数"><a href="#一个函数调用另一个函数" class="headerlink" title="一个函数调用另一个函数"></a>一个函数调用另一个函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">let</span> b = <span class="title function_">g</span>(<span class="number">2</span>)</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">g</span>(<span class="params">y</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> k = <span class="title function_">f</span>(<span class="number">1</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先 定义了两个函数 <code>f</code> 和 <code>g</code></li>
+<li>…</li>
+<li>执行 <code>let k = f(1)</code>。<code>f(1)</code> 调用 <code>f</code>，实参为 <code>1</code>，记住这个 <strong>位置1</strong> <code>let k = f(1)</code><ul>
+<li>程序会 跳转到了 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>1</code>（进入一个 <strong>房间1</strong>，房间里已经有了 <code>let x=1</code>）</li>
+<li>…</li>
+<li>执行<code>let b = g(2)</code>。<code>g(2)</code> 调用了函数 <code>g</code>，记住这个 <strong>位置2</strong> <code>let b = g(2)</code><ul>
+<li>跳转到 <code>g</code> 的函数体中，的形参 <code>y</code> 被赋值为实参 <code>2</code>（进入一个 <strong>房间2</strong>，房间里已经有了 <code>let y=2</code>）</li>
+<li>…</li>
+<li><code>g</code> 中的 <code>return y</code> 表明了函数 <code>g</code> 返回了，返回值是 <code>y</code>，值为 <code>2</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间2</strong> 退出，回到 <strong>房间1</strong> 中的 <strong>位置2</strong> <code>let b = g(1)</code>，接着向下执行</li>
+<li>变量 <code>b</code> 被赋值为 <code>g(1)</code> 的返回值 <code>2</code></li>
+<li>接着执行 函数 <code>f</code> 的函数体</li>
+<li>…</li>
+<li><code>return 2</code> 表明 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>1</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间1</strong> 退出，回到 <strong>位置1</strong> <code>let k = f(1)</code>，接着向下执行</li>
+<li>变量 <code>k</code> 被赋值为 <code>f(1)</code> 的返回值 <code>1</code></li>
+<li>…</li>
+</ul>
+<h3 id="函数调用自己"><a href="#函数调用自己" class="headerlink" title="函数调用自己"></a>函数调用自己</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (x == <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> c = <span class="title function_">f</span>(x + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(<span class="number">1</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先定义了一个函数 <code>f</code>，形参为 <code>x</code></li>
+<li>…</li>
+<li>执行 <code>let b = f(1)</code>。<code>f(1)</code> 调用了 <code>f</code>，实参为 <code>1</code>，程序会记住这个 <strong>位置1</strong> <code>let b = f(1)</code></li>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>1</code>（进入一个 <strong>房间1</strong>，房间里已经有了 <code>let x=1</code>）</li>
+<li>执行 <code>let c = f(x + 1)</code>。<code>f(x+1)</code> <strong>又</strong> 调用了 <code>f</code>，程序会记住这个 <strong>位置2</strong> <code>let c = f(x + 1)</code>，即 <code>f(2)</code><ul>
+<li>程序会 跳转到一个 <strong>新的</strong> <code>f</code> 中，形参 <code>x</code> 被赋值为 <code>2</code>（进入一个新的 <strong>房间2</strong>，房间里已经有了 <code>let x=2</code>）</li>
+<li><code>if (x == 2)</code> 判断符合条件，执行<code>return x</code>，表明 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>2</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间2</strong> 退出，回到 <strong>房间1</strong> 中的 <strong>位置2</strong> <code>let c = f(x + 1)</code>，接着向下执行</li>
+<li><code>return x</code>，表明函数 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>1</code></li>
+<li>程序 从 <strong>房间1</strong> 退出，回到 <strong>位置1</strong> <code>let b = f(1)</code>，接着向下执行</li>
+<li>…</li>
+</ul>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/call-stack/" rel="tag">call-stack</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/recursion/" rel="tag">recursion</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2024/03/29/2024-03-29-javascript-5/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                JavaScript 入门（5）：栈和队列
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2024/03/27/2024-03-27-javascript-3/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        JavaScript 入门（3）：排序算法
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">函数定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">函数的返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8%E5%92%8C%E8%BF%94%E5%9B%9E"><span class="toc-number">3.</span> <span class="toc-text">函数的调用和返回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%A4%9A%E6%AC%A1"><span class="toc-number">4.</span> <span class="toc-text">一个函数调用多次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E6%9C%89%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">一个函数有多个参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">一个函数调用另一个函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%87%AA%E5%B7%B1"><span class="toc-number">7.</span> <span class="toc-text">函数调用自己</span></a></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 入门（9）：树 | 我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="树的节点树是一种数据结构，它是一个由 节点 组成的，具有层级关系的集合。
+
+每个节点有 零或多个 子节点
+没有 父节点 的节点，称为 根节点。除了根节点之外，每个节点有且只有一个父节点
+除了根节点之外，每个子节点，可以构成多个不相交的 子树
+
+
+
+二叉树
+二叉树 是每个节点，最多有两个子节点（0、1、2）的树。
+
+满二叉树，每一层的每一个节点，都有两个子节点
+
+
+完全二叉树，中间节点都有两个子节点，最下层可以只有一个子节点（必须是左子节点）
+
+满二叉树一定是完全二叉树，完全二叉树并不一定是满二叉树
+
+
+二叉树的遍历
+
+深度优先
+前序遍历：中左右 ABDECF
+中序遍历：左中右 DBEAFC
+后序遍历：左右中 DEBFCA...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            云里写诗，泥里生活，岁月里洒脱。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>JavaScript 入门（9）：树</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2024-04-06T16:00:00.000Z">
+                    2024-04-07
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+        </div>
+        <h3 id="树的节点"><a href="#树的节点" class="headerlink" title="树的节点"></a>树的节点</h3><p>树是一种数据结构，它是一个由 <strong>节点</strong> 组成的，具有层级关系的集合。</p>
+<ul>
+<li>每个节点有 零或多个 <strong>子节点</strong></li>
+<li>没有 <strong>父节点</strong> 的节点，称为 <strong>根节点</strong>。除了根节点之外，每个节点有且只有一个父节点</li>
+<li>除了根节点之外，每个子节点，可以构成多个不相交的 <strong>子树</strong></li>
+</ul>
+<img src="/2024/04/07/2024-04-07-javascript-9/tree.png" class="">
+
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li><p><strong>二叉树</strong> 是每个节点，最多有两个子节点（0、1、2）的树。</p>
+</li>
+<li><p><strong>满二叉树</strong>，每一层的每一个节点，都有两个子节点</p>
+<img src="/2024/04/07/2024-04-07-javascript-9/full-binary-tree.png" class="">
+</li>
+<li><p><strong>完全二叉树</strong>，中间节点都有两个子节点，最下层可以只有一个子节点（必须是左子节点）</p>
+</li>
+<li><p>满二叉树一定是完全二叉树，完全二叉树并不一定是满二叉树</p>
+<img src="/2024/04/07/2024-04-07-javascript-9/complete-binary-tree.png" class=""></li>
+</ul>
+<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><img src="/2024/04/07/2024-04-07-javascript-9/traverse.png" class="">
+
+<h4 id="深度优先"><a href="#深度优先" class="headerlink" title="深度优先"></a>深度优先</h4><ul>
+<li>前序遍历：中左右 <code>ABDECF</code></li>
+<li>中序遍历：左中右 <code>DBEAFC</code></li>
+<li>后序遍历：左右中 <code>DEBFCA</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">value</span>: <span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;<span class="attr">value</span>: <span class="string">&#x27;B&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> c = &#123;<span class="attr">value</span>: <span class="string">&#x27;C&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> d = &#123;<span class="attr">value</span>: <span class="string">&#x27;D&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> e = &#123;<span class="attr">value</span>: <span class="string">&#x27;E&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> f = &#123;<span class="attr">value</span>: <span class="string">&#x27;F&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">a.<span class="property">left</span> = b</span><br><span class="line">a.<span class="property">right</span> = c</span><br><span class="line">b.<span class="property">left</span> = d</span><br><span class="line">b.<span class="property">right</span> = e</span><br><span class="line">c.<span class="property">left</span> = f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dfs</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(node == <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> left = node.<span class="property">left</span></span><br><span class="line">  <span class="keyword">let</span> right = node.<span class="property">right</span></span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 调整后面三个语句的顺序，实现不同顺序的遍历</span></span><br><span class="line">  <span class="comment">// 中左右（当前）、左中右、左右中</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(node.<span class="property">value</span>)</span><br><span class="line">  <span class="title function_">dfs</span>(left)</span><br><span class="line">  <span class="title function_">dfs</span>(right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">dfs</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h4 id="广度优先"><a href="#广度优先" class="headerlink" title="广度优先"></a>广度优先</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bfs</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> queue = [node]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> head = queue.<span class="title function_">shift</span>()</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(head.<span class="property">value</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> left = head.<span class="property">left</span></span><br><span class="line">    <span class="keyword">let</span> right = head.<span class="property">right</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (left != <span class="literal">null</span>) &#123;</span><br><span class="line">      queue.<span class="title function_">push</span>(left)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (right != <span class="literal">null</span>) &#123;</span><br><span class="line">      queue.<span class="title function_">push</span>(right)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">bfs</span>(a)  <span class="comment">// ABCDEF</span></span><br></pre></td></tr></table></figure>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/data-structure/" rel="tag">data-structure</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/tree/" rel="tag">tree</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2024/04/08/2024-04-08-cpp-2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                简单学点 C++（2）：整数、浮点数
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2024/04/02/2024-04-02-javascript-8/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        JavaScript 入门（8）：链表
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">树的节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">3.</span> <span class="toc-text">二叉树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88"><span class="toc-number">3.1.</span> <span class="toc-text">深度优先</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88"><span class="toc-number">3.2.</span> <span class="toc-text">广度优先</span></a></li></ol></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

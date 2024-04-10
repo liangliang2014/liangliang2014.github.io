@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简单学点 C++（2）：整数、浮点数 | 我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="整数整数的类别1234int a;short b;long c;long long d;
+
+内存占用整数在内存中占用的 字节数，与操作系统有关。
+
+
+
+操作系统
+short
+int
+long
+
+
+
+Windows（64 位）
+2
+4
+4
+
+
+类 Unix（Unix&amp;#x2F;Linux&amp;#x2F;MacOS&amp;#x2F;BSD 等）
+2
+4
+8
+
+
+
+整数占用字节数的大小，可以用 sizeof(...) 进行探测。
+使用 sizeof(int) 或者 sizeof(变量) 都可以。
+
+1234sizeof(int)  // 4int a;sizeof(a)  // 4
+
+整数运算
+四则运算：+ - * /（其中 / 表示整...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>简单学点 C++（2）：整数、浮点数</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2024-04-07T16:00:00.000Z">
+                    2024-04-08
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+        </div>
+        <h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><h4 id="整数的类别"><a href="#整数的类别" class="headerlink" title="整数的类别"></a>整数的类别</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="type">short</span> b;</span><br><span class="line"><span class="type">long</span> c;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> d;</span><br></pre></td></tr></table></figure>
+
+<h4 id="内存占用"><a href="#内存占用" class="headerlink" title="内存占用"></a>内存占用</h4><p>整数在内存中占用的 <strong>字节数</strong>，与操作系统有关。</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>short</th>
+<th>int</th>
+<th>long</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows（64 位）</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>类 Unix（Unix&#x2F;Linux&#x2F;MacOS&#x2F;BSD 等）</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<ul>
+<li>整数占用字节数的大小，可以用 <code>sizeof(...)</code> 进行探测。</li>
+<li>使用 <code>sizeof(int)</code> 或者 <code>sizeof(变量)</code> 都可以。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sizeof</span>(<span class="type">int</span>)  <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="built_in">sizeof</span>(a)  <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h4><ul>
+<li>四则运算：<code>+</code> <code>-</code> <code>*</code> <code>/</code>（其中 <code>/</code> 表示整除）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">7</span>;</span><br><span class="line"><span class="type">int</span> b = a/<span class="number">3</span>;  <span class="comment">// 2</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>取余操作：<code>%</code></li>
+</ul>
+<p>例子：今天是星期 5，求 30 天以后是星期几？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">5</span>;  <span class="comment">// 0 表示星期日，1~6 表示星期一到星期六</span></span><br><span class="line"><span class="type">int</span> b = (a + <span class="number">30</span>) % <span class="number">7</span>;  <span class="comment">// 余数为 0，则为星期日</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h4><ul>
+<li>ASCII</li>
+</ul>
+<img src="/2024/04/08/2024-04-08-cpp-2/ASCII.jpeg" class="">
+
+<ul>
+<li>字符本质上也是整数。</li>
+<li>可以用整数给字符赋值，也可以把字符赋值给整数。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"><span class="type">char</span> b = <span class="number">65</span>;</span><br><span class="line"><span class="type">int</span> c = a;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;        <span class="comment">// A</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;        <span class="comment">// A</span></span><br><span class="line">cout &lt;&lt; c &lt;&lt; endl;        <span class="comment">// 65</span></span><br><span class="line">cout &lt;&lt; (<span class="type">char</span>)c &lt;&lt; endl;  <span class="comment">// A</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>字符的字面表达只支持 ASCII 字符，特殊字符需要转义。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="string">&#x27;\t&#x27;</span>;  <span class="comment">// tab</span></span><br><span class="line"><span class="type">int</span> b = <span class="string">&#x27;\n&#x27;</span>;  <span class="comment">// 换行</span></span><br><span class="line"><span class="type">int</span> c = <span class="string">&#x27;\\&#x27;</span>;  <span class="comment">// \</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="有符号整数和无符号整数"><a href="#有符号整数和无符号整数" class="headerlink" title="有符号整数和无符号整数"></a>有符号整数和无符号整数</h4><ul>
+<li>并不改变整数占用的内存大小，但是改变了取值范围。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">signed</span> <span class="type">int</span> a;   <span class="comment">// 默认是有符号的，相当于 int a</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> b; <span class="comment">// 无符号整数</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>-2^31 ~ 2^31-1</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>0 ~ 2^32-1</td>
+</tr>
+<tr>
+<td>char</td>
+<td>-2^7 ~ 2^7-1 （-128 ~ 127）</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>0 ~ 2^8-1 （0 ~ 255）</td>
+</tr>
+</tbody></table>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><h4 id="浮点数的类别"><a href="#浮点数的类别" class="headerlink" title="浮点数的类别"></a>浮点数的类别</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用字节数</th>
+<th>有效数字（位）</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4</td>
+<td>7</td>
+<td>-2^128 ~ +2^128 （-3.40e+38 ~ +3.40e+38）</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>16</td>
+<td>-2^1024 ~ +2^1024 （-1.79e+308 ~ +1.79e+308）</td>
+</tr>
+</tbody></table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> a = <span class="number">3.15F</span>;  <span class="comment">// 字面量默认为 double，用 F 明确表示为 float</span></span><br><span class="line"><span class="type">double</span> b = <span class="number">300</span>;</span><br><span class="line"><span class="type">double</span> c = <span class="number">300.0</span>;</span><br><span class="line"><span class="type">double</span> d = <span class="number">1.2e-3</span>;  <span class="comment">// e 指数表示法 0.0012</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;  <span class="comment">// 3.15</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;  <span class="comment">// 300</span></span><br><span class="line">cout &lt;&lt; c &lt;&lt; endl;  <span class="comment">// 300</span></span><br><span class="line">cout &lt;&lt; d &lt;&lt; endl;  <span class="comment">// 0.0012</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="自动转换与强制转换"><a href="#自动转换与强制转换" class="headerlink" title="自动转换与强制转换"></a>自动转换与强制转换</h4><ul>
+<li>较小的类型自动转换为较大的类型，如果向相反方向转换，则需要强制转换</li>
+<li><code>char -&gt; short -&gt; int -&gt; long long -&gt; float -&gt; double</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> a = <span class="number">3.15</span>;</span><br><span class="line"><span class="type">int</span> b = (<span class="type">int</span>)a;</span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;  <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="浮点数不能进行相等比较"><a href="#浮点数不能进行相等比较" class="headerlink" title="浮点数不能进行相等比较"></a>浮点数不能进行相等比较</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="type">double</span> b = <span class="number">0.2</span>;</span><br><span class="line">cout &lt;&lt; (a+b == <span class="number">0.3</span>) &lt;&lt; endl;  <span class="comment">// 0 表示 false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>正确做法：跟一个很小的数进行比较（例如 <code>1e-8</code>）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="type">double</span> b = <span class="number">0.2</span>;</span><br><span class="line">cout &lt;&lt; (<span class="built_in">fabs</span>((a+b)<span class="number">-0.3</span>) &lt; <span class="number">1e-8</span>) &lt;&lt; endl;  <span class="comment">// 1 表示 true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="上下取整、四舍五入"><a href="#上下取整、四舍五入" class="headerlink" title="上下取整、四舍五入"></a>上下取整、四舍五入</h4><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>说明</th>
+<th>2.4</th>
+<th>2.6</th>
+<th>-2.4</th>
+<th>-2.6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>floor()</td>
+<td>不大于它的最大整数</td>
+<td>2</td>
+<td>2</td>
+<td>-3</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>ceil()</td>
+<td>不小于它的最小整数</td>
+<td>3</td>
+<td>3</td>
+<td>-2</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>round()</td>
+<td>临近它的整数</td>
+<td>2</td>
+<td>3</td>
+<td>-2</td>
+<td>-3</td>
+</tr>
+</tbody></table>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/float/" rel="tag">float</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/int/" rel="tag">int</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2024/04/09/2024-04-09-cpp-3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                简单学点 C++（3）：布尔类型、交换变量、宏
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2024/04/07/2024-04-07-javascript-9/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        JavaScript 入门（9）：树
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">整数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="toc-number">1.1.</span> <span class="toc-text">整数的类别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">内存占用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">1.3.</span> <span class="toc-text">整数运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6"><span class="toc-number">1.4.</span> <span class="toc-text">字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E5%92%8C%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">有符号整数和无符号整数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">浮点数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="toc-number">2.1.</span> <span class="toc-text">浮点数的类别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%8E%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.2.</span> <span class="toc-text">自动转换与强制转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E7%9B%B8%E7%AD%89%E6%AF%94%E8%BE%83"><span class="toc-number">2.3.</span> <span class="toc-text">浮点数不能进行相等比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E5%8F%96%E6%95%B4%E3%80%81%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5"><span class="toc-number">2.4.</span> <span class="toc-text">上下取整、四舍五入</span></a></li></ol></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

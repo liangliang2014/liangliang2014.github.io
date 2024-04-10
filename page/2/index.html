@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    
+    <div id="recent-posts">
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/28/2024-03-28-javascript-4/">
+                        JavaScript 入门（4）：函数调用栈
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-27T16:00:00.000Z">
+                            2024-03-28
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义了一个名字为 <code>f</code> 的 <strong>函数</strong>，函数 <code>f</code> 的 <strong>形参</strong> 名字为 <code>x</code></li>
+<li><code>&#123; ... &#125;</code> 花括号包围的部分，是函数 <code>f</code> 的 <strong>函数体</strong></li>
+</ul>
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数使用 <code>return</code> 语句 <strong>返回值</strong></li>
+<li>如果函数体中写了 <code>return 1</code> 语句，那么函数的返回值，就是 <code>return</code> 后面的值 <code>1</code></li>
+<li>如果函数体中没有写 <code>return</code>，或者 <code>return</code> 后面没有值，那就是 <code>return undefined</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// return undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span>  <span class="comment">// return undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数的调用和返回"><a href="#函数的调用和返回" class="headerlink" title="函数的调用和返回"></a>函数的调用和返回</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(<span class="number">0</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先定义了一个函数 <code>f</code></li>
+<li>…</li>
+<li>执行 <code>let b = f(0)</code>。<code>f(0)</code> 调用函数 <code>f</code>，程序会记住这个 <strong>位置</strong> <code>let b = f(0)</code><ul>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>0</code>（相当于 进入了一个 <strong>房间</strong>，房间里已经有了 <code>let x = 0</code>）</li>
+<li>…</li>
+<li><code>return 1</code> 表明函数 <code>f</code> 返回了，返回值是 <code>1</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间</strong> 里退出，回到记住的 <strong>位置</strong> <code>let b = f(0)</code>，接着向下执行</li>
+<li>变量 <code>b</code> 被赋值为 <code>f(0)</code> 的返回值 <code>1</code></li>
+<li>…</li>
+</ul>
+<h3 id="一个函数调用多次"><a href="#一个函数调用多次" class="headerlink" title="一个函数调用多次"></a>一个函数调用多次</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b1 = <span class="title function_">f</span>(<span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b2 = <span class="title function_">f</span>(<span class="number">2</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先定义了一个函数 <code>f</code></li>
+<li>…</li>
+<li>执行 <code>let b1 = f(1)</code>。<code>f(1)</code> 调用函数 <code>f</code>，程序会记住这个 <strong>位置</strong> <code>let b1 = f(1)</code><ul>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>1</code>（进入一个 <strong>房间</strong>，房间里已经有了 <code>let x = 1</code>）</li>
+<li>…</li>
+<li><code>return x</code> 表明函数 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>1</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间</strong> 里退出，回到记住的 <strong>位置</strong> <code>let b1 = f(1)</code>，接着向下执行</li>
+<li>变量 <code>b1</code> 被赋值为 <code>f(1)</code> 的返回值 <code>1</code></li>
+<li>…</li>
+<li>执行 <code>let b2 = f(2)</code>。<code>f(2)</code> 调用函数 <code>f</code>，程序会记住这个 <strong>位置</strong> <code>let b2 = f(2)</code><ul>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>2</code>（进入一个 <strong>房间</strong>，房间里已经有了 <code>let x = 2</code>）</li>
+<li>…</li>
+<li><code>return x</code> 表明函数 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>2</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间</strong> 里退出，回到记住的 <strong>位置</strong> <code>let b2 = f(2)</code>，接着向下执行</li>
+<li>变量 <code>b2</code> 被赋值为 <code>f(2)</code> 的返回值 <code>2</code></li>
+<li>…</li>
+</ul>
+<h3 id="一个函数有多个参数"><a href="#一个函数有多个参数" class="headerlink" title="一个函数有多个参数"></a>一个函数有多个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数可以接受多个参数 <code>x</code>，<code>y</code>，函数调用时，可以传入多个实参 <code>0</code>，<code>1</code></li>
+<li><code>f(0,1)</code> 调用时，形参 <code>x</code> 被赋值为 <code>0</code>，形参 <code>y</code> 被赋值为 <code>1</code>（进入一个房间，房间里已经有了 <code>let x=0,y=1</code>）</li>
+</ul>
+<h3 id="一个函数调用另一个函数"><a href="#一个函数调用另一个函数" class="headerlink" title="一个函数调用另一个函数"></a>一个函数调用另一个函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">let</span> b = <span class="title function_">g</span>(<span class="number">2</span>)</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">g</span>(<span class="params">y</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> k = <span class="title function_">f</span>(<span class="number">1</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先 定义了两个函数 <code>f</code> 和 <code>g</code></li>
+<li>…</li>
+<li>执行 <code>let k = f(1)</code>。<code>f(1)</code> 调用 <code>f</code>，实参为 <code>1</code>，记住这个 <strong>位置1</strong> <code>let k = f(1)</code><ul>
+<li>程序会 跳转到了 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>1</code>（进入一个 <strong>房间1</strong>，房间里已经有了 <code>let x=1</code>）</li>
+<li>…</li>
+<li>执行<code>let b = g(2)</code>。<code>g(2)</code> 调用了函数 <code>g</code>，记住这个 <strong>位置2</strong> <code>let b = g(2)</code><ul>
+<li>跳转到 <code>g</code> 的函数体中，的形参 <code>y</code> 被赋值为实参 <code>2</code>（进入一个 <strong>房间2</strong>，房间里已经有了 <code>let y=2</code>）</li>
+<li>…</li>
+<li><code>g</code> 中的 <code>return y</code> 表明了函数 <code>g</code> 返回了，返回值是 <code>y</code>，值为 <code>2</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间2</strong> 退出，回到 <strong>房间1</strong> 中的 <strong>位置2</strong> <code>let b = g(1)</code>，接着向下执行</li>
+<li>变量 <code>b</code> 被赋值为 <code>g(1)</code> 的返回值 <code>2</code></li>
+<li>接着执行 函数 <code>f</code> 的函数体</li>
+<li>…</li>
+<li><code>return 2</code> 表明 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>1</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间1</strong> 退出，回到 <strong>位置1</strong> <code>let k = f(1)</code>，接着向下执行</li>
+<li>变量 <code>k</code> 被赋值为 <code>f(1)</code> 的返回值 <code>1</code></li>
+<li>…</li>
+</ul>
+<h3 id="函数调用自己"><a href="#函数调用自己" class="headerlink" title="函数调用自己"></a>函数调用自己</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (x == <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> c = <span class="title function_">f</span>(x + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(<span class="number">1</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先定义了一个函数 <code>f</code>，形参为 <code>x</code></li>
+<li>…</li>
+<li>执行 <code>let b = f(1)</code>。<code>f(1)</code> 调用了 <code>f</code>，实参为 <code>1</code>，程序会记住这个 <strong>位置1</strong> <code>let b = f(1)</code></li>
+<li>程序会 跳转到 <code>f</code> 的函数体中，形参 <code>x</code> 被赋值为实参 <code>1</code>（进入一个 <strong>房间1</strong>，房间里已经有了 <code>let x=1</code>）</li>
+<li>执行 <code>let c = f(x + 1)</code>。<code>f(x+1)</code> <strong>又</strong> 调用了 <code>f</code>，程序会记住这个 <strong>位置2</strong> <code>let c = f(x + 1)</code>，即 <code>f(2)</code><ul>
+<li>程序会 跳转到一个 <strong>新的</strong> <code>f</code> 中，形参 <code>x</code> 被赋值为 <code>2</code>（进入一个新的 <strong>房间2</strong>，房间里已经有了 <code>let x=2</code>）</li>
+<li><code>if (x == 2)</code> 判断符合条件，执行<code>return x</code>，表明 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>2</code></li>
+</ul>
+</li>
+<li>程序 从 <strong>房间2</strong> 退出，回到 <strong>房间1</strong> 中的 <strong>位置2</strong> <code>let c = f(x + 1)</code>，接着向下执行</li>
+<li><code>return x</code>，表明函数 <code>f</code> 返回了，返回值是 <code>x</code>，值为 <code>1</code></li>
+<li>程序 从 <strong>房间1</strong> 退出，回到 <strong>位置1</strong> <code>let b = f(1)</code>，接着向下执行</li>
+<li>…</li>
+</ul>
+
+                
+                <div class="readmore">
+                    <a href="/2024/03/28/2024-03-28-javascript-4/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/27/2024-03-27-javascript-3/">
+                        JavaScript 入门（3）：排序算法
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-26T16:00:00.000Z">
+                            2024-03-27
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <p>我学了一些排序算法。</p>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">6</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">10</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; a.<span class="property">length</span> - <span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; a.<span class="property">length</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (a[j] &lt; a[i]) &#123;</span><br><span class="line">      <span class="keyword">let</span> t = a[j]</span><br><span class="line">      a[j] = a[i]</span><br><span class="line">      a[i] = t</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">debugger</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">6</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (x.<span class="property">length</span> &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> t = x[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> l = []</span><br><span class="line">  <span class="keyword">let</span> r = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x[i] &lt; t) &#123;</span><br><span class="line">      l.<span class="title function_">push</span>(x[i])</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      r.<span class="title function_">push</span>(x[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> bl = <span class="title function_">f</span>(l)</span><br><span class="line">  <span class="keyword">let</span> br = <span class="title function_">f</span>(r)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> e = [...bl, t, ...br]</span><br><span class="line">  <span class="keyword">return</span> e</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">f</span>(a)</span><br><span class="line"><span class="keyword">debugger</span></span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/03/27/2024-03-27-javascript-3/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/26/2024-03-26-git/">
+                        提交代码
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-25T16:00:00.000Z">
+                            2024-03-26
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/common/">common</a></li></ul></li></ul>
+                </div>
+                
+                    <p>我学习了如何从 github 克隆与提交代码。</p>
+<h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> Project</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> &lt;ssh-url&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git add .</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git commit -m <span class="string">&quot;提交信息&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git push</span></span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/03/26/2024-03-26-git/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/25/2024-03-25-javascript-2/">
+                        JavaScript 入门（2）：编码练习
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-24T16:00:00.000Z">
+                            2024-03-25
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="从-1-加到-100"><a href="#从-1-加到-100" class="headerlink" title="从 1 加到 100"></a>从 1 加到 100</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">  a = a + i</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜数字"><a href="#猜数字" class="headerlink" title="猜数字"></a>猜数字</h3><blockquote>
+<p>一个数除以 3 余 2，除以 4 余 3，除以 5 刚好除尽，这个数是几？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">2</span> &amp;&amp; i % <span class="number">4</span> == <span class="number">3</span> &amp;&amp; i % <span class="number">5</span> == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鸡兔同笼问题"><a href="#鸡兔同笼问题" class="headerlink" title="鸡兔同笼问题"></a>鸡兔同笼问题</h3><blockquote>
+<p>46 个头，128 只脚，请问鸡和兔分别有多少只？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">1000</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= <span class="number">1000</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">let</span> heads = i + j</span><br><span class="line">    <span class="keyword">let</span> feet = i * <span class="number">2</span> + j * <span class="number">4</span></span><br><span class="line">    <span class="keyword">if</span> (heads == <span class="number">46</span> &amp;&amp; feet == <span class="number">128</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(i, j)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="求解完全数"><a href="#求解完全数" class="headerlink" title="求解完全数"></a>求解完全数</h3><blockquote>
+<p>一个数的因数和等于自身，这个数可能是 6，28，下一个数是多少？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">10000</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i % j == <span class="number">0</span>) &#123;</span><br><span class="line">      x = x + j</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (i == x) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="找出数组中的最大值"><a href="#找出数组中的最大值" class="headerlink" title="找出数组中的最大值"></a>找出数组中的最大值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">13</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">34</span>, <span class="number">16</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = x[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (b &lt; x[i]) &#123;</span><br><span class="line">      b = x[i]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r = <span class="title function_">f</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(r)</span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/03/25/2024-03-25-javascript-2/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/24/2024-03-24-javascript-1/">
+                        JavaScript 入门（1）：变量、控制结构、数组、对象、函数
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-23T16:00:00.000Z">
+                            2024-03-24
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <p>最近我学了一门编程语言：<a target="_blank" rel="noopener" href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">javascript</a>。</p>
+<h3 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">100</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello World&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
+<li>定义：<code>let a = 1</code></li>
+<li>使用：<code>a</code></li>
+<li>赋值：<code>a = 2</code></li>
+</ul>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><ul>
+<li>相等：<code>==</code></li>
+<li>不相等：<code>!=</code></li>
+<li>大于：<code>a &gt; 1</code></li>
+<li>大于等于：<code>a &gt;= 1</code></li>
+<li>小于：<code>a &lt; 1</code></li>
+<li>小于等于：<code>a &lt;= 1</code></li>
+<li>并且：<code>&amp;&amp;</code></li>
+<li>或者：<code>||</code></li>
+<li>自增运算：<code>++</code>（<code>i++</code> 相当于 <code>i=i+1</code>）</li>
+</ul>
+<h3 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h3><ul>
+<li>顺序：换行</li>
+<li>选择：<code>if (a &gt; 0) &#123; ... &#125; else &#123; ... &#125;</code>（<code>else &#123; ... &#125;</code> 可以省略）</li>
+<li>循环：<code>for (let i = 1; i &lt;= 100; i++) &#123; ... &#125;</code></li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h4><ul>
+<li>数字：<code>100</code> …</li>
+<li>字符串：<code>&#39;Hello World&#39;</code> …</li>
+<li>布尔值：<code>true</code>、<code>false</code></li>
+</ul>
+<h4 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h4><ul>
+<li><p>数组</p>
+<ul>
+<li>定义：<code>let a = []</code></li>
+<li>使用：<code>a[0]</code></li>
+<li>赋值：<code>a[0] = 1</code></li>
+</ul>
+</li>
+<li><p>对象</p>
+<ul>
+<li>定义：<code>let a = &#123;&#125;</code></li>
+<li>使用：<code>a.b</code>（或者 <code>a[&#39;b&#39;]</code>）</li>
+<li>赋值：<code>a.b = 1</code>（或者 <code>a[&#39;b&#39;]=1</code>）</li>
+</ul>
+</li>
+</ul>
+<p>数组和对象，都可以在定义的同时初始化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a2 = &#123; <span class="attr">b</span>: <span class="number">1</span>, <span class="attr">c</span>: <span class="number">2</span> &#125; <span class="comment">// 可以写成一行</span></span><br><span class="line"><span class="keyword">let</span> a3 = &#123; <span class="comment">// 也可以写为多行</span></span><br><span class="line">  <span class="attr">b</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">2</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>定义：<code>function f(x) &#123; ... return y &#125;</code></li>
+<li>调用：<code>let b = f(a)</code></li>
+</ul>
+<h3 id="一些数学知识"><a href="#一些数学知识" class="headerlink" title="一些数学知识"></a>一些数学知识</h3><ul>
+<li>求余数：<code>5 % 2</code></li>
+<li>求绝对值：<code>Math.abs(x)</code></li>
+</ul>
+
+                
+                <div class="readmore">
+                    <a href="/2024/03/24/2024-03-24-javascript-1/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/22/2024-03-22-shell/">
+                        命令行
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-21T16:00:00.000Z">
+                            2024-03-22
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/common/">common</a></li></ul></li></ul>
+                </div>
+                
+                    <p>我学了一些 Shell 命令。</p>
+<p><img src="https://iterm2.com/img/logo2x.jpg"></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>跳转到目录</td>
+<td><code>$ cd &lt;directory&gt;</code></td>
+</tr>
+<tr>
+<td>列出目录下的文件</td>
+<td><code>$ ll</code></td>
+</tr>
+<tr>
+<td>新建 Project</td>
+<td><code>$ npm init</code></td>
+</tr>
+<tr>
+<td>安装依赖</td>
+<td><code>$ npm install [-S] &lt;pkg-name&gt;</code></td>
+</tr>
+<tr>
+<td>例：安装 <code>trash</code> 命令</td>
+<td><code>$ npm install -g trash-cli</code></td>
+</tr>
+<tr>
+<td>例：把文件丢入废纸篓</td>
+<td><code>$ trash &lt;file&gt;</code></td>
+</tr>
+</tbody></table>
+
+                
+                <div class="readmore">
+                    <a href="/2024/03/22/2024-03-22-shell/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/01/04/2024-01-04-editor/">
+                        编辑器
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-01-03T16:00:00.000Z">
+                            2024-01-04
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/common/">common</a></li></ul></li></ul>
+                </div>
+                
+                    <p>我学习了使用 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a> 编辑器。</p>
+<p><img src="https://code.visualstudio.com/assets/home/home-screenshot-mac-2x.png"></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新建文件</td>
+<td><code>⌘ + n</code></td>
+</tr>
+<tr>
+<td>保存</td>
+<td><code>⌘ + s</code></td>
+</tr>
+<tr>
+<td>撤销</td>
+<td><code>⌘ + z</code></td>
+</tr>
+<tr>
+<td>反撤销</td>
+<td><code>⇧ + ⌘ + z</code></td>
+</tr>
+<tr>
+<td>格式化</td>
+<td><code>⇧ + ⌥ + f</code></td>
+</tr>
+<tr>
+<td>注释</td>
+<td><code>⌘ + /</code></td>
+</tr>
+<tr>
+<td>打开内置命令行</td>
+<td><code>⌃ + `</code></td>
+</tr>
+<tr>
+<td>复制</td>
+<td><code>⌘ + c</code></td>
+</tr>
+<tr>
+<td>剪切</td>
+<td><code>⌃ + x</code></td>
+</tr>
+<tr>
+<td>粘贴</td>
+<td><code>⌃ + v</code></td>
+</tr>
+<tr>
+<td>运行（调试）</td>
+<td><code>F5</code></td>
+</tr>
+<tr>
+<td>自动补全</td>
+<td><code>Enter</code></td>
+</tr>
+<tr>
+<td>取消补全</td>
+<td><code>Esc</code></td>
+</tr>
+</tbody></table>
+
+                
+                <div class="readmore">
+                    <a href="/2024/01/04/2024-01-04-editor/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+    </div>
+
+
+    <div id="content-aside">
+    <div class="content-aside-owner">
+        <div id="owner">
+    <div class="avatar-bg">
+        <div class="index-page">
+            <div class="banner">
+                <div class="slide slide1">
+                    <div class="bg-wrapper">
+                        <div class="bg" id="container_left">
+                            <div id="canvas_left"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="bg-wrapper">
+                        <div class="bg" id="container_right">
+                            <div id="canvas_right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/"><img class="avatar" src="/images/avatar.jpg" alt=""></a>
+    <a href="/"><h3 class="author">Liangliang</h3></a>
+    <h4></h4>
+    <div class="social">
+        
+            
+              <a href="https://github.com/liangliang2014" title="github" class="fa fa-github" target="_blank"></a>
+            
+        
+            
+              <a href="#" title="weibo" class="fa fa-weibo" target="_blank"></a>
+            
+        
+    </div>
+</div>
+    </div>
+    
+    
+    
+<aside id="categories">
+    <h2>分类</h2>
+    
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">common</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+    
+</aside>
+
+    
+<aside id="archives">
+    <h2>
+        <a href="/archives">归档</a>
+    </h2>
+    
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li></ul>
+    
+</aside>
+
+</div>
+
+</div>
+<nav id="pagination" class="clearfix">
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+</nav>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/cav.js"></script>
+    <script src="/js/avatar-bg.main.js"></script>
+
+</body>
+</html>

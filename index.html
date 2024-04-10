@@ -1,0 +1,762 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            云里写诗，泥里生活，岁月里洒脱。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    
+    <div id="recent-posts">
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/11/2024-04-11-cpp-5/">
+                        简单学点 C++（5）：函数
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-10T16:00:00.000Z">
+                            2024-04-11
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="函数传参"><a href="#函数传参" class="headerlink" title="函数传参"></a>函数传参</h3><p>函数体中，形参的改变，不影响实参。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  x = <span class="number">100</span>; <span class="comment">// 改变形参，不会影响到实参</span></span><br><span class="line">  <span class="keyword">return</span> x*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;    </span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="built_in">f</span>(a);       <span class="comment">// 实参 a 的值为 10</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;  <span class="comment">// 函数调用完后，实参 a 的值还是 10    </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数传指针"><a href="#函数传指针" class="headerlink" title="函数传指针"></a>函数传指针</h3><p>通过传指针，可以让函数通过指针改变实参的值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">int</span>* p)</span> </span>&#123;</span><br><span class="line">  *p = <span class="number">100</span>; <span class="comment">// 没有改变形参，但是改变了形参指向的值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;    </span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">f</span>(&amp;a);              <span class="comment">// 传入 a 的地址 &amp;a</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;  <span class="comment">// a 的值被改变了，100    </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：用函数交换变量"><a href="#示例：用函数交换变量" class="headerlink" title="示例：用函数交换变量"></a>示例：用函数交换变量</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>* p, <span class="type">int</span>* q)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> t = *p;</span><br><span class="line">  *p = *q;</span><br><span class="line">  *q = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;    </span><br><span class="line">    <span class="type">int</span> a,b; cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    <span class="built_in">swap</span>(&amp;a, &amp;b);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt;a7&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;b7&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/11/2024-04-11-cpp-5/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/10/2024-04-10-cpp-4/">
+                        简单学点 C++（4）：指针
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-09T16:00:00.000Z">
+                            2024-04-10
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="指针就是内存地址"><a href="#指针就是内存地址" class="headerlink" title="指针就是内存地址"></a>指针就是内存地址</h3><p>指针，本质上是一个整数，它表示一块内存地址的 <strong>编号</strong>。</p>
+<ul>
+<li>在 MacOS 系统中，指针的大小为 8 个字节</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span>* p = &amp;a;  <span class="comment">// 定义了一个指向 int 的指针 p，p 的值是 a 的内存地址</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl;  <span class="comment">// 4</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(p) &lt;&lt; endl;  <span class="comment">// 8，MacOS 上为 8 字节</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; &amp;a &lt;&lt; endl;  <span class="comment">// 0x16fdff26c = 00 00 00 01 6f df f2 6c</span></span><br><span class="line">cout &lt;&lt; p &lt;&lt; endl;   <span class="comment">// 0x16fdff26c</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;  <span class="comment">// 1，访问 p 指向的内存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：指针之间的赋值"><a href="#示例：指针之间的赋值" class="headerlink" title="示例：指针之间的赋值"></a>示例：指针之间的赋值</h3><p>两个指针，指向同一块内存。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span>* p = &amp;a; <span class="comment">// 获得内存地址</span></span><br><span class="line"><span class="type">int</span>* q = p;  <span class="comment">// 将内存地址，直接赋值给另外一个指针</span></span><br><span class="line"></span><br><span class="line">*q = <span class="number">2</span>;</span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;  <span class="comment">// 2，p 指向的内存已经被 *q 改变</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：指针之间的类型转换"><a href="#示例：指针之间的类型转换" class="headerlink" title="示例：指针之间的类型转换"></a>示例：指针之间的类型转换</h3><ul>
+<li><code>int</code> 占用 4 个字节，<code>unsigned char</code> 占用 1 个字节</li>
+<li>将指向 <code>int</code> 的指针，转换成指向 <code>unsigned char</code> 的指针，从而可以访问 <code>int</code> 中的每个字节</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span>  <span class="comment">// 引入 printf</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> a = <span class="number">234759843</span>;  <span class="comment">// 0xDFE26A3 = 0D FE 26 A3</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span>* p = (<span class="type">unsigned</span> <span class="type">char</span>*) &amp;a;  <span class="comment">// 对指针进行 强制类型转换</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>, *p);      <span class="comment">// A3，末尾第一个字节</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>, *(p+<span class="number">1</span>));  <span class="comment">// 26</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>, *(p+<span class="number">2</span>));  <span class="comment">// FE</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>, *(p+<span class="number">3</span>));  <span class="comment">// 0D</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：交换指针，不交换数据本身"><a href="#示例：交换指针，不交换数据本身" class="headerlink" title="示例：交换指针，不交换数据本身"></a>示例：交换指针，不交换数据本身</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SWAP(a,b) &#123;int* t=a;a=b;b=t;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;    </span><br><span class="line">    <span class="type">int</span> x,y,z; cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span>* a = &amp;x;</span><br><span class="line">    <span class="type">int</span>* b = &amp;y;</span><br><span class="line">    <span class="type">int</span>* c = &amp;z;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(*a&gt;*b) <span class="built_in">SWAP</span>(a,b)</span><br><span class="line">    <span class="keyword">if</span>(*b&gt;*c) <span class="built_in">SWAP</span>(b,c)</span><br><span class="line">    <span class="keyword">if</span>(*a&gt;*b) <span class="built_in">SWAP</span>(a,b)</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;*a&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;*b&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;*c&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/10/2024-04-10-cpp-4/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/09/2024-04-09-cpp-3/">
+                        简单学点 C++（3）：布尔类型、交换变量、宏
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-08T16:00:00.000Z">
+                            2024-04-09
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="布尔逻辑"><a href="#布尔逻辑" class="headerlink" title="布尔逻辑"></a>布尔逻辑</h3><h4 id="bool-类型"><a href="#bool-类型" class="headerlink" title="bool 类型"></a>bool 类型</h4><p>C++ 99 规定用 1 个字节表示 <code>bool</code>，其他类型转来的，都转换为 <code>0</code> 或 <code>1</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> a = <span class="literal">true</span>;  <span class="comment">// 实际储存为 1</span></span><br><span class="line"><span class="type">bool</span> b = <span class="number">5</span>;  <span class="comment">// 非 0 值都是 true，储存为 1</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl;  <span class="comment">// 1 个字节</span></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;  <span class="comment">// 1</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：输入一个年份，判断是否为闰年"><a href="#示例：输入一个年份，判断是否为闰年" class="headerlink" title="示例：输入一个年份，判断是否为闰年"></a>示例：输入一个年份，判断是否为闰年</h4><p>闰年：能被 4 整除，并且不能被 100 整除。再加上可以被 400 整除的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> y; cin &gt;&gt; y;</span><br><span class="line"><span class="type">bool</span> a = (y%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; y%<span class="number">100</span>!=<span class="number">0</span>) || (y%<span class="number">400</span>==<span class="number">0</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：输入三个数，求最小值"><a href="#示例：输入三个数，求最小值" class="headerlink" title="示例：输入三个数，求最小值"></a>示例：输入三个数，求最小值</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a,b,c; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> m = a;</span><br><span class="line"><span class="keyword">if</span>(b&lt;m) m = b;</span><br><span class="line"><span class="keyword">if</span>(c&lt;m) m = c;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; m &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h3 id="交换变量"><a href="#交换变量" class="headerlink" title="交换变量"></a>交换变量</h3><h4 id="示例：交换两个变量的值"><a href="#示例：交换两个变量的值" class="headerlink" title="示例：交换两个变量的值"></a>示例：交换两个变量的值</h4><p>思路：由于变量赋值会覆盖原来的值，所以借用一个临时变量来储存中间值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a,b; cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t=a; a=b; b=t;</span><br><span class="line">cout&lt;&lt;a&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;b&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：三数排序"><a href="#示例：三数排序" class="headerlink" title="示例：三数排序"></a>示例：三数排序</h4><p>思路：（冒泡排序）相邻两个数进行比较，大的交换到后面。多次重复</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a,b,c; cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a&gt;b) &#123;<span class="type">int</span> t=a; a=b; b=c;&#125;</span><br><span class="line"><span class="keyword">if</span>(b&gt;c) &#123;<span class="type">int</span> t=b; b=c; c=t;&#125;</span><br><span class="line"><span class="keyword">if</span>(a&gt;b) &#123;<span class="type">int</span> t=a; a=b; b=c;&#125;</span><br><span class="line"></span><br><span class="line">cout&lt;&lt;a&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：三数排序（使用宏）"><a href="#示例：三数排序（使用宏）" class="headerlink" title="示例：三数排序（使用宏）"></a>示例：三数排序（使用宏）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义了一个宏 SWAP</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SWAP(a,b) &#123;int t=a; a=b; b=t;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> a,b,c; cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(a&gt;b) <span class="built_in">SWAP</span>(a,b)</span><br><span class="line">    <span class="keyword">if</span>(b&gt;c) <span class="built_in">SWAP</span>(b,c)</span><br><span class="line">    <span class="keyword">if</span>(a&gt;b) <span class="built_in">SWAP</span>(a,b)</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;a&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot;, &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/09/2024-04-09-cpp-3/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/08/2024-04-08-cpp-2/">
+                        简单学点 C++（2）：整数、浮点数
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-07T16:00:00.000Z">
+                            2024-04-08
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><h4 id="整数的类别"><a href="#整数的类别" class="headerlink" title="整数的类别"></a>整数的类别</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="type">short</span> b;</span><br><span class="line"><span class="type">long</span> c;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> d;</span><br></pre></td></tr></table></figure>
+
+<h4 id="内存占用"><a href="#内存占用" class="headerlink" title="内存占用"></a>内存占用</h4><p>整数在内存中占用的 <strong>字节数</strong>，与操作系统有关。</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>short</th>
+<th>int</th>
+<th>long</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows（64 位）</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>类 Unix（Unix&#x2F;Linux&#x2F;MacOS&#x2F;BSD 等）</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<ul>
+<li>整数占用字节数的大小，可以用 <code>sizeof(...)</code> 进行探测。</li>
+<li>使用 <code>sizeof(int)</code> 或者 <code>sizeof(变量)</code> 都可以。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sizeof</span>(<span class="type">int</span>)  <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="built_in">sizeof</span>(a)  <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h4><ul>
+<li>四则运算：<code>+</code> <code>-</code> <code>*</code> <code>/</code>（其中 <code>/</code> 表示整除）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">7</span>;</span><br><span class="line"><span class="type">int</span> b = a/<span class="number">3</span>;  <span class="comment">// 2</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>取余操作：<code>%</code></li>
+</ul>
+<p>例子：今天是星期 5，求 30 天以后是星期几？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">5</span>;  <span class="comment">// 0 表示星期日，1~6 表示星期一到星期六</span></span><br><span class="line"><span class="type">int</span> b = (a + <span class="number">30</span>) % <span class="number">7</span>;  <span class="comment">// 余数为 0，则为星期日</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h4><ul>
+<li>ASCII</li>
+</ul>
+<img src="/2024/04/08/2024-04-08-cpp-2/ASCII.jpeg" class="">
+
+<ul>
+<li>字符本质上也是整数。</li>
+<li>可以用整数给字符赋值，也可以把字符赋值给整数。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"><span class="type">char</span> b = <span class="number">65</span>;</span><br><span class="line"><span class="type">int</span> c = a;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;        <span class="comment">// A</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;        <span class="comment">// A</span></span><br><span class="line">cout &lt;&lt; c &lt;&lt; endl;        <span class="comment">// 65</span></span><br><span class="line">cout &lt;&lt; (<span class="type">char</span>)c &lt;&lt; endl;  <span class="comment">// A</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>字符的字面表达只支持 ASCII 字符，特殊字符需要转义。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="string">&#x27;\t&#x27;</span>;  <span class="comment">// tab</span></span><br><span class="line"><span class="type">int</span> b = <span class="string">&#x27;\n&#x27;</span>;  <span class="comment">// 换行</span></span><br><span class="line"><span class="type">int</span> c = <span class="string">&#x27;\\&#x27;</span>;  <span class="comment">// \</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="有符号整数和无符号整数"><a href="#有符号整数和无符号整数" class="headerlink" title="有符号整数和无符号整数"></a>有符号整数和无符号整数</h4><ul>
+<li>并不改变整数占用的内存大小，但是改变了取值范围。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">signed</span> <span class="type">int</span> a;   <span class="comment">// 默认是有符号的，相当于 int a</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> b; <span class="comment">// 无符号整数</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>-2^31 ~ 2^31-1</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>0 ~ 2^32-1</td>
+</tr>
+<tr>
+<td>char</td>
+<td>-2^7 ~ 2^7-1 （-128 ~ 127）</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>0 ~ 2^8-1 （0 ~ 255）</td>
+</tr>
+</tbody></table>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><h4 id="浮点数的类别"><a href="#浮点数的类别" class="headerlink" title="浮点数的类别"></a>浮点数的类别</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用字节数</th>
+<th>有效数字（位）</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4</td>
+<td>7</td>
+<td>-2^128 ~ +2^128 （-3.40e+38 ~ +3.40e+38）</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>16</td>
+<td>-2^1024 ~ +2^1024 （-1.79e+308 ~ +1.79e+308）</td>
+</tr>
+</tbody></table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> a = <span class="number">3.15F</span>;  <span class="comment">// 字面量默认为 double，用 F 明确表示为 float</span></span><br><span class="line"><span class="type">double</span> b = <span class="number">300</span>;</span><br><span class="line"><span class="type">double</span> c = <span class="number">300.0</span>;</span><br><span class="line"><span class="type">double</span> d = <span class="number">1.2e-3</span>;  <span class="comment">// e 指数表示法 0.0012</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;  <span class="comment">// 3.15</span></span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;  <span class="comment">// 300</span></span><br><span class="line">cout &lt;&lt; c &lt;&lt; endl;  <span class="comment">// 300</span></span><br><span class="line">cout &lt;&lt; d &lt;&lt; endl;  <span class="comment">// 0.0012</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="自动转换与强制转换"><a href="#自动转换与强制转换" class="headerlink" title="自动转换与强制转换"></a>自动转换与强制转换</h4><ul>
+<li>较小的类型自动转换为较大的类型，如果向相反方向转换，则需要强制转换</li>
+<li><code>char -&gt; short -&gt; int -&gt; long long -&gt; float -&gt; double</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> a = <span class="number">3.15</span>;</span><br><span class="line"><span class="type">int</span> b = (<span class="type">int</span>)a;</span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;  <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="浮点数不能进行相等比较"><a href="#浮点数不能进行相等比较" class="headerlink" title="浮点数不能进行相等比较"></a>浮点数不能进行相等比较</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="type">double</span> b = <span class="number">0.2</span>;</span><br><span class="line">cout &lt;&lt; (a+b == <span class="number">0.3</span>) &lt;&lt; endl;  <span class="comment">// 0 表示 false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>正确做法：跟一个很小的数进行比较（例如 <code>1e-8</code>）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="type">double</span> b = <span class="number">0.2</span>;</span><br><span class="line">cout &lt;&lt; (<span class="built_in">fabs</span>((a+b)<span class="number">-0.3</span>) &lt; <span class="number">1e-8</span>) &lt;&lt; endl;  <span class="comment">// 1 表示 true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="上下取整、四舍五入"><a href="#上下取整、四舍五入" class="headerlink" title="上下取整、四舍五入"></a>上下取整、四舍五入</h4><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>说明</th>
+<th>2.4</th>
+<th>2.6</th>
+<th>-2.4</th>
+<th>-2.6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>floor()</td>
+<td>不大于它的最大整数</td>
+<td>2</td>
+<td>2</td>
+<td>-3</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>ceil()</td>
+<td>不小于它的最小整数</td>
+<td>3</td>
+<td>3</td>
+<td>-2</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>round()</td>
+<td>临近它的整数</td>
+<td>2</td>
+<td>3</td>
+<td>-2</td>
+<td>-3</td>
+</tr>
+</tbody></table>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/08/2024-04-08-cpp-2/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/07/2024-04-07-javascript-9/">
+                        JavaScript 入门（9）：树
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-06T16:00:00.000Z">
+                            2024-04-07
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="树的节点"><a href="#树的节点" class="headerlink" title="树的节点"></a>树的节点</h3><p>树是一种数据结构，它是一个由 <strong>节点</strong> 组成的，具有层级关系的集合。</p>
+<ul>
+<li>每个节点有 零或多个 <strong>子节点</strong></li>
+<li>没有 <strong>父节点</strong> 的节点，称为 <strong>根节点</strong>。除了根节点之外，每个节点有且只有一个父节点</li>
+<li>除了根节点之外，每个子节点，可以构成多个不相交的 <strong>子树</strong></li>
+</ul>
+<img src="/2024/04/07/2024-04-07-javascript-9/tree.png" class="">
+
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li><p><strong>二叉树</strong> 是每个节点，最多有两个子节点（0、1、2）的树。</p>
+</li>
+<li><p><strong>满二叉树</strong>，每一层的每一个节点，都有两个子节点</p>
+<img src="/2024/04/07/2024-04-07-javascript-9/full-binary-tree.png" class="">
+</li>
+<li><p><strong>完全二叉树</strong>，中间节点都有两个子节点，最下层可以只有一个子节点（必须是左子节点）</p>
+</li>
+<li><p>满二叉树一定是完全二叉树，完全二叉树并不一定是满二叉树</p>
+<img src="/2024/04/07/2024-04-07-javascript-9/complete-binary-tree.png" class=""></li>
+</ul>
+<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><img src="/2024/04/07/2024-04-07-javascript-9/traverse.png" class="">
+
+<h4 id="深度优先"><a href="#深度优先" class="headerlink" title="深度优先"></a>深度优先</h4><ul>
+<li>前序遍历：中左右 <code>ABDECF</code></li>
+<li>中序遍历：左中右 <code>DBEAFC</code></li>
+<li>后序遍历：左右中 <code>DEBFCA</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">value</span>: <span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;<span class="attr">value</span>: <span class="string">&#x27;B&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> c = &#123;<span class="attr">value</span>: <span class="string">&#x27;C&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> d = &#123;<span class="attr">value</span>: <span class="string">&#x27;D&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> e = &#123;<span class="attr">value</span>: <span class="string">&#x27;E&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> f = &#123;<span class="attr">value</span>: <span class="string">&#x27;F&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">a.<span class="property">left</span> = b</span><br><span class="line">a.<span class="property">right</span> = c</span><br><span class="line">b.<span class="property">left</span> = d</span><br><span class="line">b.<span class="property">right</span> = e</span><br><span class="line">c.<span class="property">left</span> = f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dfs</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(node == <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> left = node.<span class="property">left</span></span><br><span class="line">  <span class="keyword">let</span> right = node.<span class="property">right</span></span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 调整后面三个语句的顺序，实现不同顺序的遍历</span></span><br><span class="line">  <span class="comment">// 中左右（当前）、左中右、左右中</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(node.<span class="property">value</span>)</span><br><span class="line">  <span class="title function_">dfs</span>(left)</span><br><span class="line">  <span class="title function_">dfs</span>(right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">dfs</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h4 id="广度优先"><a href="#广度优先" class="headerlink" title="广度优先"></a>广度优先</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bfs</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> queue = [node]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> head = queue.<span class="title function_">shift</span>()</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(head.<span class="property">value</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> left = head.<span class="property">left</span></span><br><span class="line">    <span class="keyword">let</span> right = head.<span class="property">right</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (left != <span class="literal">null</span>) &#123;</span><br><span class="line">      queue.<span class="title function_">push</span>(left)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (right != <span class="literal">null</span>) &#123;</span><br><span class="line">      queue.<span class="title function_">push</span>(right)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">bfs</span>(a)  <span class="comment">// ABCDEF</span></span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/07/2024-04-07-javascript-9/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/02/2024-04-02-javascript-8/">
+                        JavaScript 入门（8）：链表
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-01T16:00:00.000Z">
+                            2024-04-02
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node1 = &#123; <span class="attr">value</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="keyword">let</span> node2 = &#123; <span class="attr">value</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="keyword">let</span> node3 = &#123; <span class="attr">value</span>: <span class="number">3</span> &#125;</span><br><span class="line"></span><br><span class="line">node1.<span class="property">next</span> = node2</span><br><span class="line">node2.<span class="property">next</span> = node3</span><br><span class="line"></span><br><span class="line"><span class="comment">// node1 -&gt; node2 -&gt; node3</span></span><br><span class="line"><span class="keyword">let</span> head = node1</span><br></pre></td></tr></table></figure>
+
+<h3 id="链表操作"><a href="#链表操作" class="headerlink" title="链表操作"></a>链表操作</h3><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;橘子&#x27;</span>, <span class="string">&#x27;香蕉&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> s = []</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> b = &#123;</span><br><span class="line">      <span class="attr">value</span>: x[i]</span><br><span class="line">    &#125;</span><br><span class="line">    s.<span class="title function_">push</span>(b)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; x.<span class="property">length</span> - <span class="number">1</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">let</span> u = s[j]</span><br><span class="line">    <span class="keyword">let</span> v = s[j + <span class="number">1</span>]</span><br><span class="line">    u.<span class="property">next</span> = v</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> head = s[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> head = <span class="title function_">f</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = head</span><br><span class="line"><span class="keyword">while</span> (c != <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="property">value</span>)</span><br><span class="line">  c = c.<span class="property">next</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">head</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">let</span> b = head</span><br><span class="line">  <span class="keyword">while</span> (b != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = b.<span class="property">next</span></span><br><span class="line">    b.<span class="property">next</span> = a</span><br><span class="line"></span><br><span class="line">    a = b</span><br><span class="line">    b = n</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r = <span class="title function_">f</span>(head)</span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/04/02/2024-04-02-javascript-8/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/01/2024-04-01-javascript-7/">
+                        JavaScript 入门（7）：while、省略花括号、真假值
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-31T16:00:00.000Z">
+                            2024-04-01
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="一次定义多个变量"><a href="#一次定义多个变量" class="headerlink" title="一次定义多个变量"></a>一次定义多个变量</h3><ul>
+<li>定义变量的同时，进行赋值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>先定义，再赋值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a, b</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更多循环"><a href="#更多循环" class="headerlink" title="更多循环"></a>更多循环</h3><h4 id="while-循环、do-循环"><a href="#while-循环、do-循环" class="headerlink" title="while 循环、do 循环"></a>while 循环、do 循环</h4><ul>
+<li>条件满足时，进行循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>先循环一次，条件满足则继续循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="keyword">while</span> (a &lt; <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h4><p>各种循环结构都可以，例如 <code>for</code>、<code>while</code></p>
+<ul>
+<li>退出循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进行下一轮循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="省略花括号"><a href="#省略花括号" class="headerlink" title="省略花括号"></a>省略花括号</h3><p><code>if</code>、<code>for</code>、<code>while</code> 这些控制结构，当只有 <strong>一行语句</strong> 时，可以省略花括号（但是不推荐）</p>
+<h4 id="if-省略花括号"><a href="#if-省略花括号" class="headerlink" title="if 省略花括号"></a>if 省略花括号</h4><ul>
+<li>单独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; <span class="number">0</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &gt; 0&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &lt;= 0&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟 <code>if</code>、<code>else</code> 放在一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; <span class="number">0</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &gt; 0&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &lt;= 0&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="for-省略花括号"><a href="#for-省略花括号" class="headerlink" title="for 省略花括号"></a>for 省略花括号</h4><ul>
+<li>单独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟 <code>for</code> 放在一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure>
+
+<h4 id="while-省略花括号"><a href="#while-省略花括号" class="headerlink" title="while 省略花括号"></a>while 省略花括号</h4><ul>
+<li>单独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟 <code>while</code> 放在一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="真假值"><a href="#真假值" class="headerlink" title="真假值"></a>真假值</h3><ul>
+<li>假值：<code>0</code>、<code>&#39;&#39;</code>、<code>NaN</code>、<code>null</code>、<code>false</code>、<code>undefined</code></li>
+<li>真值：其他都为真值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>相等性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>NaN</code></td>
+<td>连自身都不 <code>==</code>（<code>NaN != NaN</code>）</td>
+</tr>
+<tr>
+<td><code>null</code>、<code>undefined</code></td>
+<td>这两个互相 <code>==</code>（<code>null == undefined</code>）</td>
+</tr>
+<tr>
+<td><code>0</code>、<code>&#39;&#39;</code>、<code>false</code></td>
+<td>这三个互相 <code>==</code>（<code>0 == &#39;&#39; == false</code>）</td>
+</tr>
+</tbody></table>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> != <span class="title class_">NaN</span>)        <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// null、undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 0、&#x27;&#x27;、false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="string">&#x27;&#x27;</span>)           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="literal">false</span>)        <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">false</span> == <span class="string">&#x27;&#x27;</span>)       <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/01/2024-04-01-javascript-7/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/31/2024-03-31-cpp-1/">
+                        简单学点 C++（1）：变量、控制结构、数组、函数
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-30T16:00:00.000Z">
+                            2024-03-31
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="C-程序构成"><a href="#C-程序构成" class="headerlink" title="C++ 程序构成"></a>C++ 程序构成</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span>  <span class="comment">// 引入 std::cout、std::cin</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std; <span class="comment">// 省略 std::cout 前的 std::，直接写为 cout</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;  <span class="comment">// 主函数</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello World!&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// 程序退出状态，0 表示正常退出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h4 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; <span class="string">&quot;Hello&quot;</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接受输入"><a href="#接受输入" class="headerlink" title="接受输入"></a>接受输入</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line">cin &gt;&gt; i;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 整数</span></span><br><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小数</span></span><br><span class="line"><span class="type">float</span> b = <span class="number">1.3</span>;</span><br><span class="line">cout &lt;&lt; b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符</span></span><br><span class="line"><span class="type">char</span> c = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">cout &lt;&lt; c &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">string d = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">cout &lt;&lt; d &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔值</span></span><br><span class="line"><span class="type">bool</span> e = <span class="literal">true</span>;</span><br><span class="line">cout &lt;&lt; e &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h3 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h3><h4 id="if-选择"><a href="#if-选择" class="headerlink" title="if 选择"></a>if 选择</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(a&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a 大于 0&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a 小于 0&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    cout &lt;&lt; i;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="静态数组"><a href="#静态数组" class="headerlink" title="静态数组"></a>静态数组</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">10</span>] = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">10</span>&#125;; <span class="comment">// 需要提前指定数组长度</span></span><br><span class="line">cout &lt;&lt; a[<span class="number">0</span>] &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; a[<span class="number">9</span>] &lt;&lt; endl; <span class="comment">// 初始化为 0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[] = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">10</span>&#125;; <span class="comment">// 不指定长度，则为初始化列表的长度</span></span><br><span class="line">cout &lt;&lt; a[<span class="number">3</span>] &lt;&lt; endl; <span class="comment">// 初始化为 0</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="动态数组"><a href="#动态数组" class="headerlink" title="动态数组"></a>动态数组</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 动态数组</span></span><br><span class="line"><span class="type">int</span> size = <span class="number">20</span>;</span><br><span class="line"><span class="type">int</span> *arr = <span class="keyword">new</span> <span class="type">int</span>[size];  <span class="comment">// 动态分配空间</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">    cout &lt;&lt; arr[i];</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br><span class="line"><span class="keyword">delete</span>[] arr;  <span class="comment">// 最后还要释放掉</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="不带参数和返回值"><a href="#不带参数和返回值" class="headerlink" title="不带参数和返回值"></a>不带参数和返回值</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数定义</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello World&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 函数调用</span></span><br><span class="line">    <span class="built_in">f</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="带参数和返回值的函数"><a href="#带参数和返回值的函数" class="headerlink" title="带参数和返回值的函数"></a>带参数和返回值的函数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数定义</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 函数调用</span></span><br><span class="line">    <span class="type">int</span> r = <span class="built_in">f</span>(<span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; r &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span>  <span class="comment">// 引入 std::stack</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    </span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">1</span>); <span class="comment">// 压栈</span></span><br><span class="line">    s.<span class="built_in">push</span>(<span class="number">2</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> t1 = s.<span class="built_in">top</span>();  <span class="comment">// 栈顶元素</span></span><br><span class="line"></span><br><span class="line">    s.<span class="built_in">pop</span>();  <span class="comment">// 弹栈</span></span><br><span class="line">    <span class="type">int</span> t2 = s.<span class="built_in">top</span>();</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; t1 &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; t2 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span>  <span class="comment">// 引入 std::unordered_map</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    unordered_map&lt;string,string&gt; m;</span><br><span class="line">    m[<span class="string">&quot;gz&quot;</span>] = <span class="string">&quot;甘蔗&quot;</span>;  <span class="comment">// 添加 键值对</span></span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; m[<span class="string">&quot;gz&quot;</span>] &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="示例：输入-3-个数字，求和并输出结果"><a href="#示例：输入-3-个数字，求和并输出结果" class="headerlink" title="示例：输入 3 个数字，求和并输出结果"></a>示例：输入 3 个数字，求和并输出结果</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">3</span>;i++)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;请输入第&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;个数字：&quot;</span>;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        </span><br><span class="line">        s=s+n;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;这些数字的和是：&quot;</span>;</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/03/31/2024-03-31-cpp-1/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/30/2024-03-30-javascript-6/">
+                        JavaScript 入门（6）：集合与哈希表
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-29T16:00:00.000Z">
+                            2024-03-30
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="JavaScript-中的集合"><a href="#JavaScript-中的集合" class="headerlink" title="JavaScript 中的集合"></a>JavaScript 中的集合</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">add</span>(<span class="string">&#x27;x&#x27;</span>)          <span class="comment">// 向集合中添加元素</span></span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">has</span>(<span class="string">&#x27;x&#x27;</span>)  <span class="comment">// true，查找集合是否包含某个元素</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：判断数组中是否有重复元素"><a href="#示例：判断数组中是否有重复元素" class="headerlink" title="示例：判断数组中是否有重复元素"></a>示例：判断数组中是否有重复元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;y&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> a2 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> e = x[i]</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 一次判断每个元素是否在集合中，如果不在就加进去</span></span><br><span class="line">    <span class="keyword">if</span> (s.<span class="title function_">has</span>(e)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      s.<span class="title function_">add</span>(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r1 = <span class="title function_">f</span>(a1)</span><br><span class="line"><span class="keyword">let</span> r2 = <span class="title function_">f</span>(a2)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="JavaScript-中的哈希表"><a href="#JavaScript-中的哈希表" class="headerlink" title="JavaScript 中的哈希表"></a>JavaScript 中的哈希表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">set</span>(<span class="string">&#x27;gz&#x27;</span>, <span class="string">&#x27;甘蔗&#x27;</span>)   <span class="comment">// 向哈希表中添加键值对</span></span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">get</span>(<span class="string">&#x27;gz&#x27;</span>)  <span class="comment">// &#x27;甘蔗&#x27;，查找某个键对应的值</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：两数之和"><a href="#示例：两数之和" class="headerlink" title="示例：两数之和"></a>示例：两数之和</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://leetcode.cn/problems/two-sum/description/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nums = [<span class="number">3</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> target = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">a, t</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; a.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> b = t - a[i]</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 依次判断每个数与目标值的差，是否在哈希表中</span></span><br><span class="line">    <span class="comment">// 如果不在，就把这个数与下标的映射关系，存到哈希表中</span></span><br><span class="line">    <span class="keyword">if</span> (m.<span class="title function_">has</span>(b)) &#123;</span><br><span class="line">      <span class="keyword">let</span> ii = m.<span class="title function_">get</span>(b)</span><br><span class="line">      <span class="keyword">return</span> [ii, i]</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      m.<span class="title function_">set</span>(a[i], i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r = <span class="title function_">f</span>(nums, target)</span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/03/30/2024-03-30-javascript-6/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/03/29/2024-03-29-javascript-5/">
+                        JavaScript 入门（5）：栈和队列
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-28T16:00:00.000Z">
+                            2024-03-29
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="JavaScript-中的数组操作"><a href="#JavaScript-中的数组操作" class="headerlink" title="JavaScript 中的数组操作"></a>JavaScript 中的数组操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unshift --&gt; [] &lt;-- push</span><br><span class="line">shift   &lt;-- [] --&gt; pop</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">push</span>(<span class="number">2</span>)           <span class="comment">// 右边进 [1,2]</span></span><br><span class="line">a.<span class="title function_">unshift</span>(<span class="number">3</span>)        <span class="comment">// 左边进 [3,1,2]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b1 = a.<span class="title function_">pop</span>()    <span class="comment">// 右边出 2，剩下 [3,1]</span></span><br><span class="line"><span class="keyword">let</span> b2 = a.<span class="title function_">shift</span>()  <span class="comment">// 左边出 3，剩下 [1]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：栈-和-队列"><a href="#示例：栈-和-队列" class="headerlink" title="示例：栈 和 队列"></a>示例：栈 和 队列</h3><table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>性质</th>
+<th>JavaScript 实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>栈</td>
+<td>先进后出</td>
+<td><code>push, pop</code> 或 <code>unshift, shift</code></td>
+</tr>
+<tr>
+<td>队列</td>
+<td>先进先出</td>
+<td><code>push, shift</code> 或 <code>unshift, pop</code></td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 栈</span></span><br><span class="line"><span class="keyword">let</span> stack = []</span><br><span class="line"></span><br><span class="line">stack.<span class="title function_">push</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">stack.<span class="title function_">push</span>(<span class="string">&#x27;world&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先进后出</span></span><br><span class="line">stack.<span class="title function_">pop</span>()  <span class="comment">// &#x27;world&#x27;</span></span><br><span class="line">stack.<span class="title function_">pop</span>()  <span class="comment">// &#x27;hello&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 队列</span></span><br><span class="line"><span class="keyword">let</span> queue = []</span><br><span class="line"></span><br><span class="line">quque.<span class="title function_">push</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">queue.<span class="title function_">push</span>(<span class="string">&#x27;world&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先进先出</span></span><br><span class="line">queue.<span class="title function_">shift</span>()  <span class="comment">// &#x27;hello&#x27;</span></span><br><span class="line">queue.<span class="title function_">shift</span>()  <span class="comment">// &#x27;world&#x27;</span></span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/03/29/2024-03-29-javascript-5/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+    </div>
+
+
+    <div id="content-aside">
+    <div class="content-aside-owner">
+        <div id="owner">
+    <div class="avatar-bg">
+        <div class="index-page">
+            <div class="banner">
+                <div class="slide slide1">
+                    <div class="bg-wrapper">
+                        <div class="bg" id="container_left">
+                            <div id="canvas_left"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="bg-wrapper">
+                        <div class="bg" id="container_right">
+                            <div id="canvas_right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/"><img class="avatar" src="/images/avatar.jpg" alt=""></a>
+    <a href="/"><h3 class="author">Liangliang</h3></a>
+    <h4></h4>
+    <div class="social">
+        
+            
+              <a href="https://github.com/liangliang2014" title="github" class="fa fa-github" target="_blank"></a>
+            
+        
+            
+              <a href="#" title="weibo" class="fa fa-weibo" target="_blank"></a>
+            
+        
+    </div>
+</div>
+    </div>
+    
+    
+    
+<aside id="categories">
+    <h2>分类</h2>
+    
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">common</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+    
+</aside>
+
+    
+<aside id="archives">
+    <h2>
+        <a href="/archives">归档</a>
+    </h2>
+    
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li></ul>
+    
+</aside>
+
+</div>
+
+</div>
+<nav id="pagination" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+</nav>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/cav.js"></script>
+    <script src="/js/avatar-bg.main.js"></script>
+
+</body>
+</html>
