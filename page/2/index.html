@@ -45,6 +45,56 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2024/03/29/2024-03-29-javascript-5/">
+                        JavaScript 入门（5）：栈和队列
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-03-28T16:00:00.000Z">
+                            2024-03-29
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="JavaScript-中的数组操作"><a href="#JavaScript-中的数组操作" class="headerlink" title="JavaScript 中的数组操作"></a>JavaScript 中的数组操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unshift --&gt; [] &lt;-- push</span><br><span class="line">shift   &lt;-- [] --&gt; pop</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">push</span>(<span class="number">2</span>)           <span class="comment">// 右边进 [1,2]</span></span><br><span class="line">a.<span class="title function_">unshift</span>(<span class="number">3</span>)        <span class="comment">// 左边进 [3,1,2]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b1 = a.<span class="title function_">pop</span>()    <span class="comment">// 右边出 2，剩下 [3,1]</span></span><br><span class="line"><span class="keyword">let</span> b2 = a.<span class="title function_">shift</span>()  <span class="comment">// 左边出 3，剩下 [1]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：栈-和-队列"><a href="#示例：栈-和-队列" class="headerlink" title="示例：栈 和 队列"></a>示例：栈 和 队列</h3><table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>性质</th>
+<th>JavaScript 实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>栈</td>
+<td>先进后出</td>
+<td><code>push, pop</code> 或 <code>unshift, shift</code></td>
+</tr>
+<tr>
+<td>队列</td>
+<td>先进先出</td>
+<td><code>push, shift</code> 或 <code>unshift, pop</code></td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 栈</span></span><br><span class="line"><span class="keyword">let</span> stack = []</span><br><span class="line"></span><br><span class="line">stack.<span class="title function_">push</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">stack.<span class="title function_">push</span>(<span class="string">&#x27;world&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先进后出</span></span><br><span class="line">stack.<span class="title function_">pop</span>()  <span class="comment">// &#x27;world&#x27;</span></span><br><span class="line">stack.<span class="title function_">pop</span>()  <span class="comment">// &#x27;hello&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 队列</span></span><br><span class="line"><span class="keyword">let</span> queue = []</span><br><span class="line"></span><br><span class="line">quque.<span class="title function_">push</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">queue.<span class="title function_">push</span>(<span class="string">&#x27;world&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先进先出</span></span><br><span class="line">queue.<span class="title function_">shift</span>()  <span class="comment">// &#x27;hello&#x27;</span></span><br><span class="line">queue.<span class="title function_">shift</span>()  <span class="comment">// &#x27;world&#x27;</span></span><br></pre></td></tr></table></figure>
+                
+                <div class="readmore">
+                    <a href="/2024/03/29/2024-03-29-javascript-5/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2024/03/28/2024-03-28-javascript-4/">
                         JavaScript 入门（4）：函数调用栈
                     </a>
@@ -546,7 +596,7 @@
 <aside id="categories">
     <h2>分类</h2>
     
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">common</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/olympics/">olympics</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">common</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
     
 </aside>
 
