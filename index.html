@@ -45,6 +45,97 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2024/04/11/2024-04-11-cpp-6/">
+                        简单学点 C++（6）：循环、数组、字符串
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-11T12:00:00.000Z">
+                            2024-04-11
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h3><ul>
+<li><p>基本用法：当条件满足时，执行循环</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件)&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>break</code> 退出循环</p>
+</li>
+<li><p>对于嵌套循环，<code>break</code> 只能跳出最内层循环</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件)&#123;</span><br><span class="line">  <span class="keyword">if</span>(...)&#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>continue</code> 进行下一轮循环</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件) &#123;</span><br><span class="line">  <span class="keyword">if</span>(...)&#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：输出颠倒数"><a href="#示例：输出颠倒数" class="headerlink" title="示例：输出颠倒数"></a>示例：输出颠倒数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x; cin&gt;&gt;x;  <span class="comment">// 12345</span></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="type">int</span> y = x%<span class="number">10</span>;  <span class="comment">// 求余数</span></span><br><span class="line">  <span class="type">int</span> s = x/<span class="number">10</span>;  <span class="comment">// 求商（整除）</span></span><br><span class="line">  cout &lt;&lt; y;  <span class="comment">// 5 4 3 2 1</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(s==<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  x=s;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><ul>
+<li>基本用法：循环 <code>N</code> 次（<code>i</code> 从 <code>0</code> 到 <code>N-1</code>）<ul>
+<li>初始化表达式：<code>int i=0</code></li>
+<li>循环条件：<code>i&lt;N</code></li>
+<li>更新表达式：<code>i++</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>省略写法</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(;;)&#123;  <span class="comment">// 初始化表达式，循环条件，更新表达式 都可以省略</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>for 循环也可以支持 <code>break</code> 和 <code>continue</code></li>
+</ul>
+<h4 id="示例：输出-100-以内的所有素数"><a href="#示例：输出-100-以内的所有素数" class="headerlink" title="示例：输出 100 以内的所有素数"></a>示例：输出 100 以内的所有素数</h4><p>素数：只能被 1 和它自身整除的正整数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">prime</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> q=<span class="number">2</span>;q&lt;=x<span class="number">-1</span>;q++)&#123;  <span class="comment">// 从 2 到 x-1 依次判断，都不能整除才是素数</span></span><br><span class="line">    <span class="keyword">if</span>(x%q == <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;    </span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">prime</span>(i)) cout&lt;&lt;i&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; endl;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><ul>
+<li>数组是连续多个同类型的变量，只有一个名字</li>
+<li>通过下标可以访问数组，从 0 开始，C++ 不检查下标越界</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>];</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">cout &lt;&lt; a[<span class="number">10</span>] &lt;&lt; endl;  <span class="comment">// 下标越界，但是也能访问</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="数组名"><a href="#数组名" class="headerlink" title="数组名"></a>数组名</h4><ul>
+<li>对于数组来说，数组名就是第一个元素的地址</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span>* p = &amp;a[<span class="number">0</span>];</span><br><span class="line"><span class="type">int</span>* q = a;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;  <span class="comment">// 0x16fdff268</span></span><br><span class="line">cout &lt;&lt; p &lt;&lt; endl;  <span class="comment">// 0x16fdff268</span></span><br><span class="line">cout &lt;&lt; q &lt;&lt; endl;  <span class="comment">// 0x16fdff268</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="内存堆"><a href="#内存堆" class="headerlink" title="内存堆"></a>内存堆</h4><ul>
+<li>在内存堆中，分配一个整数</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="keyword">new</span> <span class="type">int</span>;  <span class="comment">// 分配内存</span></span><br><span class="line"></span><br><span class="line">*p = <span class="number">1</span>;</span><br><span class="line">cout &lt;&lt; p &lt;&lt; endl;  <span class="comment">// 0x60000000c010</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl; <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> p;  <span class="comment">// 释放内存</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; p &lt;&lt; endl;  <span class="comment">// 0x60000000c010</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl; <span class="comment">// -559054800</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在内存堆中，分配一个整数数组</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* p = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;      <span class="comment">// 1</span></span><br><span class="line">cout &lt;&lt; p[<span class="number">0</span>] &lt;&lt; endl;    <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">p[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">cout &lt;&lt; *(p+<span class="number">1</span>) &lt;&lt; endl;  <span class="comment">// 2</span></span><br><span class="line">cout &lt;&lt; p[<span class="number">1</span>] &lt;&lt; endl;    <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span>[] p;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
+<li>字符串就是 <code>char</code> 类型的数组。</li>
+<li>C++ 规定字符串都以 <code>&#39;\0&#39;</code>（整数值为 <code>0</code> 的 ASCII 字符） 结尾。</li>
+<li>空字符串 <code>&quot;&quot;</code>，也要分配一个 <code>char</code>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> s[<span class="number">10</span>] = <span class="string">&quot;ha&quot;</span>;</span><br><span class="line">cout &lt;&lt; s[<span class="number">0</span>] &lt;&lt; endl;       <span class="comment">// h</span></span><br><span class="line">cout &lt;&lt; s[<span class="number">1</span>] &lt;&lt; endl;       <span class="comment">// a</span></span><br><span class="line">cout &lt;&lt; (<span class="type">int</span>)s[<span class="number">2</span>] &lt;&lt; endl;  <span class="comment">// 0，转换为 int，否则 &#x27;\0&#x27; 这个字符无法显示出来</span></span><br><span class="line"></span><br><span class="line">s[<span class="number">2</span>] = <span class="string">&#x27;h&#x27;</span>;</span><br><span class="line">s[<span class="number">3</span>] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">s[<span class="number">4</span>] = <span class="string">&#x27;\0&#x27;</span>; <span class="comment">// 或者 s[4]=0; 也可以</span></span><br><span class="line">cout &lt;&lt; s &lt;&lt; endl;  <span class="comment">// haha，C++ 会读取到 \0 为止</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：字符串的反转"><a href="#示例：字符串的反转" class="headerlink" title="示例：字符串的反转"></a>示例：字符串的反转</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> s[<span class="number">100</span>]; cin&gt;&gt;s;  <span class="comment">// 读取一个字符串</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* p = s;  <span class="comment">// s 就是 &amp;s[0]</span></span><br><span class="line"><span class="type">char</span>* q = p;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(*q != <span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">  q++;</span><br><span class="line">&#125;</span><br><span class="line">q--;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(p&lt;q)&#123;</span><br><span class="line">  <span class="type">char</span> t =*p;</span><br><span class="line">  *p = *q;</span><br><span class="line">  *q = t;</span><br><span class="line"></span><br><span class="line">  p++; q--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; s &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/11/2024-04-11-cpp-6/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2024/04/10/2024-04-10-math-1/">
                         刷刷奥数（1）：多笔画问题
                     </a>
@@ -631,38 +722,6 @@
                 
                 <div class="readmore">
                     <a href="/2024/03/31/2024-03-31-cpp-1/">
-                        阅读更多
-                    </a>
-                </div>
-            </div>
-        
-            <div class="post-item">
-                <h1>
-                    <a href="/2024/03/30/2024-03-30-javascript-6/">
-                        JavaScript 入门（6）：集合与哈希表
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>创建于</span>
-                    
-                        <time datetime="2024-03-30T10:00:00.000Z">
-                            2024-03-30
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
-                </div>
-                
-                    <h3 id="JavaScript-中的集合"><a href="#JavaScript-中的集合" class="headerlink" title="JavaScript 中的集合"></a>JavaScript 中的集合</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">add</span>(<span class="string">&#x27;x&#x27;</span>)          <span class="comment">// 向集合中添加元素</span></span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">has</span>(<span class="string">&#x27;x&#x27;</span>)  <span class="comment">// true，查找集合是否包含某个元素</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="示例：判断数组中是否有重复元素"><a href="#示例：判断数组中是否有重复元素" class="headerlink" title="示例：判断数组中是否有重复元素"></a>示例：判断数组中是否有重复元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;y&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> a2 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> e = x[i]</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 一次判断每个元素是否在集合中，如果不在就加进去</span></span><br><span class="line">    <span class="keyword">if</span> (s.<span class="title function_">has</span>(e)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      s.<span class="title function_">add</span>(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r1 = <span class="title function_">f</span>(a1)</span><br><span class="line"><span class="keyword">let</span> r2 = <span class="title function_">f</span>(a2)</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="JavaScript-中的哈希表"><a href="#JavaScript-中的哈希表" class="headerlink" title="JavaScript 中的哈希表"></a>JavaScript 中的哈希表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">set</span>(<span class="string">&#x27;gz&#x27;</span>, <span class="string">&#x27;甘蔗&#x27;</span>)   <span class="comment">// 向哈希表中添加键值对</span></span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">get</span>(<span class="string">&#x27;gz&#x27;</span>)  <span class="comment">// &#x27;甘蔗&#x27;，查找某个键对应的值</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="示例：两数之和"><a href="#示例：两数之和" class="headerlink" title="示例：两数之和"></a>示例：两数之和</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://leetcode.cn/problems/two-sum/description/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nums = [<span class="number">3</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> target = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">a, t</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; a.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> b = t - a[i]</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 依次判断每个数与目标值的差，是否在哈希表中</span></span><br><span class="line">    <span class="comment">// 如果不在，就把这个数与下标的映射关系，存到哈希表中</span></span><br><span class="line">    <span class="keyword">if</span> (m.<span class="title function_">has</span>(b)) &#123;</span><br><span class="line">      <span class="keyword">let</span> ii = m.<span class="title function_">get</span>(b)</span><br><span class="line">      <span class="keyword">return</span> [ii, i]</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      m.<span class="title function_">set</span>(a[i], i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r = <span class="title function_">f</span>(nums, target)</span><br></pre></td></tr></table></figure>
-                
-                <div class="readmore">
-                    <a href="/2024/03/30/2024-03-30-javascript-6/">
                         阅读更多
                     </a>
                 </div>
