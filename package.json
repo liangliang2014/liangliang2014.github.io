@@ -8,7 +8,8 @@
     "deploy": "hexo deploy",
     "server": "hexo server",
     "dev": "hexo clean && hexo server",
-    "prod": "hexo clean && hexo deploy"
+    "prod": "hexo clean && hexo deploy",
+    "clear": "git push origin --delete gh-pages"
   },
   "hexo": {
     "version": "7.1.1"
