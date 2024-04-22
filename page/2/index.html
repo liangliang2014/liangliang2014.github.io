@@ -32,7 +32,7 @@
     <div id="nav">
         <div class="nav-img" id="nav-img"></div>
         <div class="sentences">
-            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+            云里写诗，泥里生活，岁月里洒脱。
         </div>
     </div>
 </header>
@@ -42,6 +42,118 @@
         <div class="clearfix">
     
     <div id="recent-posts">
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/01/2024-04-01-javascript-7/">
+                        JavaScript 入门（7）：while、省略花括号、真假值
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-01T10:00:00.000Z">
+                            2024-04-01
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="一次定义多个变量"><a href="#一次定义多个变量" class="headerlink" title="一次定义多个变量"></a>一次定义多个变量</h3><ul>
+<li>定义变量的同时，进行赋值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>先定义，再赋值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a, b</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更多循环"><a href="#更多循环" class="headerlink" title="更多循环"></a>更多循环</h3><h4 id="while-循环、do-循环"><a href="#while-循环、do-循环" class="headerlink" title="while 循环、do 循环"></a>while 循环、do 循环</h4><ul>
+<li>条件满足时，进行循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>先循环一次，条件满足则继续循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="keyword">while</span> (a &lt; <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h4><p>各种循环结构都可以，例如 <code>for</code>、<code>while</code></p>
+<ul>
+<li>退出循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进行下一轮循环</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="省略花括号"><a href="#省略花括号" class="headerlink" title="省略花括号"></a>省略花括号</h3><p><code>if</code>、<code>for</code>、<code>while</code> 这些控制结构，当只有 <strong>一行语句</strong> 时，可以省略花括号（但是不推荐）</p>
+<h4 id="if-省略花括号"><a href="#if-省略花括号" class="headerlink" title="if 省略花括号"></a>if 省略花括号</h4><ul>
+<li>单独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; <span class="number">0</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &gt; 0&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &lt;= 0&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟 <code>if</code>、<code>else</code> 放在一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; <span class="number">0</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &gt; 0&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &lt;= 0&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="for-省略花括号"><a href="#for-省略花括号" class="headerlink" title="for 省略花括号"></a>for 省略花括号</h4><ul>
+<li>单独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟 <code>for</code> 放在一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure>
+
+<h4 id="while-省略花括号"><a href="#while-省略花括号" class="headerlink" title="while 省略花括号"></a>while 省略花括号</h4><ul>
+<li>单独占一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟 <code>while</code> 放在一行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="真假值"><a href="#真假值" class="headerlink" title="真假值"></a>真假值</h3><ul>
+<li>假值：<code>0</code>、<code>&#39;&#39;</code>、<code>NaN</code>、<code>null</code>、<code>false</code>、<code>undefined</code></li>
+<li>真值：其他都为真值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>相等性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>NaN</code></td>
+<td>连自身都不 <code>==</code>（<code>NaN != NaN</code>）</td>
+</tr>
+<tr>
+<td><code>null</code>、<code>undefined</code></td>
+<td>这两个互相 <code>==</code>（<code>null == undefined</code>）</td>
+</tr>
+<tr>
+<td><code>0</code>、<code>&#39;&#39;</code>、<code>false</code></td>
+<td>这三个互相 <code>==</code>（<code>0 == &#39;&#39; == false</code>）</td>
+</tr>
+</tbody></table>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> != <span class="title class_">NaN</span>)        <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// null、undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 0、&#x27;&#x27;、false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="string">&#x27;&#x27;</span>)           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="literal">false</span>)        <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">false</span> == <span class="string">&#x27;&#x27;</span>)       <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/01/2024-04-01-javascript-7/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
         
             <div class="post-item">
                 <h1>
@@ -545,93 +657,6 @@
                 </div>
             </div>
         
-            <div class="post-item">
-                <h1>
-                    <a href="/2024/01/04/2024-01-04-editor/">
-                        编辑器
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>创建于</span>
-                    
-                        <time datetime="2024-01-04T10:00:00.000Z">
-                            2024-01-04
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/common/">common</a></li></ul></li></ul>
-                </div>
-                
-                    <p>我学习了使用 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a> 编辑器。</p>
-<p><img src="https://code.visualstudio.com/assets/home/home-screenshot-mac-2x.png"></p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th>快捷键</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>新建文件</td>
-<td><code>⌘ + n</code></td>
-</tr>
-<tr>
-<td>保存</td>
-<td><code>⌘ + s</code></td>
-</tr>
-<tr>
-<td>撤销</td>
-<td><code>⌘ + z</code></td>
-</tr>
-<tr>
-<td>反撤销</td>
-<td><code>⇧ + ⌘ + z</code></td>
-</tr>
-<tr>
-<td>格式化</td>
-<td><code>⇧ + ⌥ + f</code></td>
-</tr>
-<tr>
-<td>注释</td>
-<td><code>⌘ + /</code></td>
-</tr>
-<tr>
-<td>打开内置命令行</td>
-<td><code>⌃ + `</code></td>
-</tr>
-<tr>
-<td>复制</td>
-<td><code>⌘ + c</code></td>
-</tr>
-<tr>
-<td>剪切</td>
-<td><code>⌃ + x</code></td>
-</tr>
-<tr>
-<td>粘贴</td>
-<td><code>⌃ + v</code></td>
-</tr>
-<tr>
-<td>运行（调试）</td>
-<td><code>F5</code></td>
-</tr>
-<tr>
-<td>自动补全</td>
-<td><code>Enter</code></td>
-</tr>
-<tr>
-<td>取消补全</td>
-<td><code>Esc</code></td>
-</tr>
-</tbody></table>
-
-                
-                <div class="readmore">
-                    <a href="/2024/01/04/2024-01-04-editor/">
-                        阅读更多
-                    </a>
-                </div>
-            </div>
-        
     </div>
 
 
@@ -698,7 +723,7 @@
 
 </div>
 <nav id="pagination" class="clearfix">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
 </nav>
 
     </div>

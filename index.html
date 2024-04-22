@@ -45,6 +45,39 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2024/04/22/2024-04-22-cpp-8/">
+                        简单学点 C++（8）：宏、内联函数
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-22T12:00:00.000Z">
+                            2024-04-22
+                        </time>
+                    
+                    
+                </div>
+                
+                    <h3 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h3><img src="/2024/04/22/2024-04-22-cpp-8/inline.png" class="" width="350">
+
+<ul>
+<li>宏的缺点：调试困难，错误不易理解，缺少编译器的监督。</li>
+<li>宏的优点：相较于函数，宏的好处是，效率。</li>
+</ul>
+<p>内联函数，可以在满足效率的要求下，避免宏的尴尬。</p>
+<h4 id="示例：冒泡排序"><a href="#示例：冒泡排序" class="headerlink" title="示例：冒泡排序"></a>示例：冒泡排序</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加 inline 关键字，使之成为内联函数</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>* p,<span class="type">int</span>* q)</span></span>&#123;</span><br><span class="line">  <span class="type">int</span> t = *p;</span><br><span class="line">  *p = *q;</span><br><span class="line">  *q = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sort</span><span class="params">(<span class="type">int</span>* p,<span class="type">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 每趟，逐个交换相邻的元素</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[j]&gt;p[j+<span class="number">1</span>])&#123;</span><br><span class="line">      <span class="built_in">swap</span>(&amp;p[j],&amp;p[j+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n; cin&gt;&gt;n;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 在堆中分配内存，长度为 n 的整数数组</span></span><br><span class="line">  <span class="type">int</span>* p=<span class="keyword">new</span> <span class="type">int</span>[n];</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">      cin&gt;&gt;p[i];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 排序：总共 n-1 趟，每趟 i 次交换</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">      <span class="built_in">sort</span>(p,i);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 打印</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">      cout&lt;&lt;p[i]&lt;&lt;<span class="string">&quot;, &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  cout&lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/22/2024-04-22-cpp-8/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2024/04/15/2024-04-15-cpp-7/">
                         简单学点 C++（7）：二维数组、指针的指针、递归
                     </a>
@@ -609,118 +642,6 @@
                 </div>
             </div>
         
-            <div class="post-item">
-                <h1>
-                    <a href="/2024/04/01/2024-04-01-javascript-7/">
-                        JavaScript 入门（7）：while、省略花括号、真假值
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>创建于</span>
-                    
-                        <time datetime="2024-04-01T10:00:00.000Z">
-                            2024-04-01
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
-                </div>
-                
-                    <h3 id="一次定义多个变量"><a href="#一次定义多个变量" class="headerlink" title="一次定义多个变量"></a>一次定义多个变量</h3><ul>
-<li>定义变量的同时，进行赋值</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>先定义，再赋值</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a, b</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="更多循环"><a href="#更多循环" class="headerlink" title="更多循环"></a>更多循环</h3><h4 id="while-循环、do-循环"><a href="#while-循环、do-循环" class="headerlink" title="while 循环、do 循环"></a>while 循环、do 循环</h4><ul>
-<li>条件满足时，进行循环</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>先循环一次，条件满足则继续循环</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="keyword">while</span> (a &lt; <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h4><p>各种循环结构都可以，例如 <code>for</code>、<code>while</code></p>
-<ul>
-<li>退出循环</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>进行下一轮循环</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="省略花括号"><a href="#省略花括号" class="headerlink" title="省略花括号"></a>省略花括号</h3><p><code>if</code>、<code>for</code>、<code>while</code> 这些控制结构，当只有 <strong>一行语句</strong> 时，可以省略花括号（但是不推荐）</p>
-<h4 id="if-省略花括号"><a href="#if-省略花括号" class="headerlink" title="if 省略花括号"></a>if 省略花括号</h4><ul>
-<li>单独占一行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; <span class="number">0</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &gt; 0&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &lt;= 0&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>跟 <code>if</code>、<code>else</code> 放在一行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; <span class="number">0</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &gt; 0&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a &lt;= 0&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="for-省略花括号"><a href="#for-省略花括号" class="headerlink" title="for 省略花括号"></a>for 省略花括号</h4><ul>
-<li>单独占一行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>跟 <code>for</code> 放在一行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure>
-
-<h4 id="while-省略花括号"><a href="#while-省略花括号" class="headerlink" title="while 省略花括号"></a>while 省略花括号</h4><ul>
-<li>单独占一行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>跟 <code>while</code> 放在一行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure>
-
-<h3 id="真假值"><a href="#真假值" class="headerlink" title="真假值"></a>真假值</h3><ul>
-<li>假值：<code>0</code>、<code>&#39;&#39;</code>、<code>NaN</code>、<code>null</code>、<code>false</code>、<code>undefined</code></li>
-<li>真值：其他都为真值</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>情况</th>
-<th>相等性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>NaN</code></td>
-<td>连自身都不 <code>==</code>（<code>NaN != NaN</code>）</td>
-</tr>
-<tr>
-<td><code>null</code>、<code>undefined</code></td>
-<td>这两个互相 <code>==</code>（<code>null == undefined</code>）</td>
-</tr>
-<tr>
-<td><code>0</code>、<code>&#39;&#39;</code>、<code>false</code></td>
-<td>这三个互相 <code>==</code>（<code>0 == &#39;&#39; == false</code>）</td>
-</tr>
-</tbody></table>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> != <span class="title class_">NaN</span>)        <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// null、undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 0、&#x27;&#x27;、false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="string">&#x27;&#x27;</span>)           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="literal">false</span>)        <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">false</span> == <span class="string">&#x27;&#x27;</span>)       <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-                
-                <div class="readmore">
-                    <a href="/2024/04/01/2024-04-01-javascript-7/">
-                        阅读更多
-                    </a>
-                </div>
-            </div>
-        
     </div>
 
 
@@ -787,7 +708,7 @@
 
 </div>
 <nav id="pagination" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
 </nav>
 
     </div>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简单学点 C++（8）：宏、内联函数 | 我的日记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="内联函数
+
+
+宏的缺点：调试困难，错误不易理解，缺少编译器的监督。
+宏的优点：相较于函数，宏的好处是，效率。
+
+内联函数，可以在满足效率的要求下，避免宏的尴尬。
+示例：冒泡排序1234567891011121314151617181920212223242526272829303132333435363738394041#include &amp;lt;iostream&amp;gt;using namespace std;// 添加 inline 关键字，使之成为内联函数inline void swap(int* p,int* q)&amp;#123;  int t = *p;  *p = *q;  *q = t;&amp;#125;void sor...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">我的日记</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>简单学点 C++（8）：宏、内联函数</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2024-04-22T12:00:00.000Z">
+                    2024-04-22
+                </time>
+            
+            
+        </div>
+        <h3 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h3><img src="/2024/04/22/2024-04-22-cpp-8/inline.png" class="" width="350">
+
+<ul>
+<li>宏的缺点：调试困难，错误不易理解，缺少编译器的监督。</li>
+<li>宏的优点：相较于函数，宏的好处是，效率。</li>
+</ul>
+<p>内联函数，可以在满足效率的要求下，避免宏的尴尬。</p>
+<h4 id="示例：冒泡排序"><a href="#示例：冒泡排序" class="headerlink" title="示例：冒泡排序"></a>示例：冒泡排序</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加 inline 关键字，使之成为内联函数</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>* p,<span class="type">int</span>* q)</span></span>&#123;</span><br><span class="line">  <span class="type">int</span> t = *p;</span><br><span class="line">  *p = *q;</span><br><span class="line">  *q = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sort</span><span class="params">(<span class="type">int</span>* p,<span class="type">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 每趟，逐个交换相邻的元素</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[j]&gt;p[j+<span class="number">1</span>])&#123;</span><br><span class="line">      <span class="built_in">swap</span>(&amp;p[j],&amp;p[j+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n; cin&gt;&gt;n;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 在堆中分配内存，长度为 n 的整数数组</span></span><br><span class="line">  <span class="type">int</span>* p=<span class="keyword">new</span> <span class="type">int</span>[n];</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">      cin&gt;&gt;p[i];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 排序：总共 n-1 趟，每趟 i 次交换</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">      <span class="built_in">sort</span>(p,i);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 打印</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">      cout&lt;&lt;p[i]&lt;&lt;<span class="string">&quot;, &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  cout&lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+        
+            <a href="/2024/04/15/2024-04-15-cpp-7/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        简单学点 C++（7）：二维数组、指针的指针、递归
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">内联函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.</span> <span class="toc-text">示例：冒泡排序</span></a></li></ol></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Liangliang  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>
