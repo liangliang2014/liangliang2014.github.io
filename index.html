@@ -45,6 +45,53 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2024/04/28/2024-04-28-cpp-9/">
+                        简单学点 C++（9）：I/O 重定向、位运算
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-28T06:00:00.000Z">
+                            2024-04-28
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/c/">c++</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="I-O-重定向"><a href="#I-O-重定向" class="headerlink" title="I&#x2F;O 重定向"></a>I&#x2F;O 重定向</h3><h4 id="示例：从文件读取，写入文件"><a href="#示例：从文件读取，写入文件" class="headerlink" title="示例：从文件读取，写入文件"></a>示例：从文件读取，写入文件</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span>  <span class="comment">// 引入 std::freopen</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">  <span class="built_in">freopen</span>(<span class="string">&quot;/Users/ll/Downloads/1.txt&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin);</span><br><span class="line">  <span class="built_in">freopen</span>(<span class="string">&quot;/Users/ll/Downloads/2.txt&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout);</span><br><span class="line">  </span><br><span class="line">  <span class="type">int</span> x; cin&gt;&gt;x;  <span class="comment">// 从 1.txt 中读取</span></span><br><span class="line">  cout&lt;&lt;x&lt;&lt;endl;  <span class="comment">// 写入 2.txt</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：通过命令行重定向"><a href="#示例：通过命令行重定向" class="headerlink" title="示例：通过命令行重定向"></a>示例：通过命令行重定向</h4><p>XCode 编译产物位置</p>
+<ul>
+<li>目录：XCode - Settings - Locations - Derived Data</li>
+<li>可执行文件地址：以上目录&#x2F;工程名&#x2F;Build&#x2F;Products&#x2F;Debug&#x2F;xxx</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./xxx &lt; /Users/ll/Downloads/1.txt &gt; /Users/ll/Downloads/2.txt</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><h4 id="位和字节"><a href="#位和字节" class="headerlink" title="位和字节"></a>位和字节</h4><ul>
+<li>1 位：<code>0</code> 或者 <code>1</code></li>
+<li>1 字节（8 位）：<code>0000 0000</code> 二进制</li>
+</ul>
+<h4 id="二进制转为-16-进制"><a href="#二进制转为-16-进制" class="headerlink" title="二进制转为 16 进制"></a>二进制转为 16 进制</h4><p>4 位二进制转为 1 个 16 进制，每一位按照 <code>8421</code> 的<strong>权重</strong>进行累加。</p>
+<p>例如，<code>0010 1100</code>，其中</p>
+<ul>
+<li>高 4 位 <code>0010</code>（权重分别为 8421）相当于 16 进制 <code>2</code>，</li>
+<li>低 4 位 <code>1100</code>（权重分别为 8421）相当于 16 进制 <code>10</code>（即 <code>A</code>）。</li>
+</ul>
+<h4 id="探测、置位、清位"><a href="#探测、置位、清位" class="headerlink" title="探测、置位、清位"></a>探测、置位、清位</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用 &amp; 探测：判断第二位是否为 1</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> a = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>,a);  <span class="comment">// 16 进制：0x41 = 0100 0001</span></span><br><span class="line">cout &lt;&lt; (<span class="type">bool</span>)(a&amp;(<span class="number">0x1</span>&lt;&lt;<span class="number">1</span>)) &lt;&lt; endl; <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 用 | 置位</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>,a|(<span class="number">0x1</span>&lt;&lt;<span class="number">1</span>));  <span class="comment">// 16 进制：0x43 = 0100 0011</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 用 &amp;~ 清位：~0x01 = 1111 1110</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%02X\n&quot;</span>,a&amp;~<span class="number">0x1</span>);  <span class="comment">// 16 进制：0x40 = 0100 0000</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例：整数二进制表示中，1-的个数"><a href="#示例：整数二进制表示中，1-的个数" class="headerlink" title="示例：整数二进制表示中，1 的个数"></a>示例：整数二进制表示中，1 的个数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&amp;<span class="number">0x1</span>)&#123;</span><br><span class="line">      n++;</span><br><span class="line">    &#125;</span><br><span class="line">    x = x&gt;&gt;<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> * argv[])</span> </span>&#123;  </span><br><span class="line">  <span class="type">int</span> a3; cin &gt;&gt; a3;</span><br><span class="line">  cout &lt;&lt; <span class="built_in">f</span>(a3) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/28/2024-04-28-cpp-9/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2024/04/22/2024-04-22-cpp-8/">
                         简单学点 C++（8）：内联函数、结构体、文件
                     </a>
@@ -646,37 +693,6 @@
                 
                 <div class="readmore">
                     <a href="/2024/04/07/2024-04-07-javascript-9/">
-                        阅读更多
-                    </a>
-                </div>
-            </div>
-        
-            <div class="post-item">
-                <h1>
-                    <a href="/2024/04/02/2024-04-02-javascript-8/">
-                        JavaScript 入门（8）：链表
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>创建于</span>
-                    
-                        <time datetime="2024-04-02T10:00:00.000Z">
-                            2024-04-02
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
-                </div>
-                
-                    <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node1 = &#123; <span class="attr">value</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="keyword">let</span> node2 = &#123; <span class="attr">value</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="keyword">let</span> node3 = &#123; <span class="attr">value</span>: <span class="number">3</span> &#125;</span><br><span class="line"></span><br><span class="line">node1.<span class="property">next</span> = node2</span><br><span class="line">node2.<span class="property">next</span> = node3</span><br><span class="line"></span><br><span class="line"><span class="comment">// node1 -&gt; node2 -&gt; node3</span></span><br><span class="line"><span class="keyword">let</span> head = node1</span><br></pre></td></tr></table></figure>
-
-<h3 id="链表操作"><a href="#链表操作" class="headerlink" title="链表操作"></a>链表操作</h3><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;橘子&#x27;</span>, <span class="string">&#x27;香蕉&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> s = []</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; x.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> b = &#123;</span><br><span class="line">      <span class="attr">value</span>: x[i]</span><br><span class="line">    &#125;</span><br><span class="line">    s.<span class="title function_">push</span>(b)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; x.<span class="property">length</span> - <span class="number">1</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">let</span> u = s[j]</span><br><span class="line">    <span class="keyword">let</span> v = s[j + <span class="number">1</span>]</span><br><span class="line">    u.<span class="property">next</span> = v</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> head = s[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> head = <span class="title function_">f</span>(a)</span><br></pre></td></tr></table></figure>
-
-<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = head</span><br><span class="line"><span class="keyword">while</span> (c != <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="property">value</span>)</span><br><span class="line">  c = c.<span class="property">next</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">head</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">let</span> b = head</span><br><span class="line">  <span class="keyword">while</span> (b != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = b.<span class="property">next</span></span><br><span class="line">    b.<span class="property">next</span> = a</span><br><span class="line"></span><br><span class="line">    a = b</span><br><span class="line">    b = n</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> r = <span class="title function_">f</span>(head)</span><br></pre></td></tr></table></figure>
-                
-                <div class="readmore">
-                    <a href="/2024/04/02/2024-04-02-javascript-8/">
                         阅读更多
                     </a>
                 </div>
