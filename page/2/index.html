@@ -32,7 +32,7 @@
     <div id="nav">
         <div class="nav-img" id="nav-img"></div>
         <div class="sentences">
-            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+            云里写诗，泥里生活，岁月里洒脱。
         </div>
     </div>
 </header>
@@ -42,6 +42,62 @@
         <div class="clearfix">
     
     <div id="recent-posts">
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2024/04/07/2024-04-07-javascript-9/">
+                        JavaScript 入门（9）：树
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>创建于</span>
+                    
+                        <time datetime="2024-04-07T10:00:00.000Z">
+                            2024-04-07
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
+                </div>
+                
+                    <h3 id="树的节点"><a href="#树的节点" class="headerlink" title="树的节点"></a>树的节点</h3><p>树是一种数据结构，它是一个由 <strong>节点</strong> 组成的，具有层级关系的集合。</p>
+<ul>
+<li>每个节点有 零或多个 <strong>子节点</strong></li>
+<li>没有 <strong>父节点</strong> 的节点，称为 <strong>根节点</strong>。除了根节点之外，每个节点有且只有一个父节点</li>
+<li>除了根节点之外，每个子节点，可以构成多个不相交的 <strong>子树</strong></li>
+</ul>
+<img src="/2024/04/07/2024-04-07-javascript-9/tree.png" class="">
+
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li><p><strong>二叉树</strong> 是每个节点，最多有两个子节点（0、1、2）的树。</p>
+</li>
+<li><p><strong>满二叉树</strong>，每一层的每一个节点，都有两个子节点</p>
+<img src="/2024/04/07/2024-04-07-javascript-9/full-binary-tree.png" class="">
+</li>
+<li><p><strong>完全二叉树</strong>，中间节点都有两个子节点，最下层可以只有一个子节点（必须是左子节点）</p>
+</li>
+<li><p>满二叉树一定是完全二叉树，完全二叉树并不一定是满二叉树</p>
+<img src="/2024/04/07/2024-04-07-javascript-9/complete-binary-tree.png" class=""></li>
+</ul>
+<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><img src="/2024/04/07/2024-04-07-javascript-9/traverse.png" class="">
+
+<h4 id="深度优先"><a href="#深度优先" class="headerlink" title="深度优先"></a>深度优先</h4><ul>
+<li>前序遍历：中左右 <code>ABDECF</code></li>
+<li>中序遍历：左中右 <code>DBEAFC</code></li>
+<li>后序遍历：左右中 <code>DEBFCA</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">value</span>: <span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;<span class="attr">value</span>: <span class="string">&#x27;B&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> c = &#123;<span class="attr">value</span>: <span class="string">&#x27;C&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> d = &#123;<span class="attr">value</span>: <span class="string">&#x27;D&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> e = &#123;<span class="attr">value</span>: <span class="string">&#x27;E&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> f = &#123;<span class="attr">value</span>: <span class="string">&#x27;F&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">a.<span class="property">left</span> = b</span><br><span class="line">a.<span class="property">right</span> = c</span><br><span class="line">b.<span class="property">left</span> = d</span><br><span class="line">b.<span class="property">right</span> = e</span><br><span class="line">c.<span class="property">left</span> = f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dfs</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(node == <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> left = node.<span class="property">left</span></span><br><span class="line">  <span class="keyword">let</span> right = node.<span class="property">right</span></span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 调整后面三个语句的顺序，实现不同顺序的遍历</span></span><br><span class="line">  <span class="comment">// 中左右（当前）、左中右、左右中</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(node.<span class="property">value</span>)</span><br><span class="line">  <span class="title function_">dfs</span>(left)</span><br><span class="line">  <span class="title function_">dfs</span>(right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">dfs</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h4 id="广度优先"><a href="#广度优先" class="headerlink" title="广度优先"></a>广度优先</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bfs</span>(<span class="params">node</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> queue = [node]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> head = queue.<span class="title function_">shift</span>()</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(head.<span class="property">value</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> left = head.<span class="property">left</span></span><br><span class="line">    <span class="keyword">let</span> right = head.<span class="property">right</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (left != <span class="literal">null</span>) &#123;</span><br><span class="line">      queue.<span class="title function_">push</span>(left)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (right != <span class="literal">null</span>) &#123;</span><br><span class="line">      queue.<span class="title function_">push</span>(right)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">bfs</span>(a)  <span class="comment">// ABCDEF</span></span><br></pre></td></tr></table></figure>
+
+                
+                <div class="readmore">
+                    <a href="/2024/04/07/2024-04-07-javascript-9/">
+                        阅读更多
+                    </a>
+                </div>
+            </div>
         
             <div class="post-item">
                 <h1>
@@ -543,87 +599,6 @@
                 
                 <div class="readmore">
                     <a href="/2024/03/25/2024-03-25-javascript-2/">
-                        阅读更多
-                    </a>
-                </div>
-            </div>
-        
-            <div class="post-item">
-                <h1>
-                    <a href="/2024/03/24/2024-03-24-javascript-1/">
-                        JavaScript 入门（1）：变量、控制结构、数组、对象、函数
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>创建于</span>
-                    
-                        <time datetime="2024-03-24T10:00:00.000Z">
-                            2024-03-24
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/">programming</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/programming/javascript/">javascript</a></li></ul></li></ul>
-                </div>
-                
-                    <p>最近我学了一门编程语言：<a target="_blank" rel="noopener" href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">javascript</a>。</p>
-<h3 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">100</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello World&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
-<li>定义：<code>let a = 1</code></li>
-<li>使用：<code>a</code></li>
-<li>赋值：<code>a = 2</code></li>
-</ul>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><ul>
-<li>相等：<code>==</code></li>
-<li>不相等：<code>!=</code></li>
-<li>大于：<code>a &gt; 1</code></li>
-<li>大于等于：<code>a &gt;= 1</code></li>
-<li>小于：<code>a &lt; 1</code></li>
-<li>小于等于：<code>a &lt;= 1</code></li>
-<li>并且：<code>&amp;&amp;</code></li>
-<li>或者：<code>||</code></li>
-<li>自增运算：<code>++</code>（<code>i++</code> 相当于 <code>i=i+1</code>）</li>
-</ul>
-<h3 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h3><ul>
-<li>顺序：换行</li>
-<li>选择：<code>if (a &gt; 0) &#123; ... &#125; else &#123; ... &#125;</code>（<code>else &#123; ... &#125;</code> 可以省略）</li>
-<li>循环：<code>for (let i = 1; i &lt;= 100; i++) &#123; ... &#125;</code></li>
-</ul>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h4><ul>
-<li>数字：<code>100</code> …</li>
-<li>字符串：<code>&#39;Hello World&#39;</code> …</li>
-<li>布尔值：<code>true</code>、<code>false</code></li>
-</ul>
-<h4 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h4><ul>
-<li><p>数组</p>
-<ul>
-<li>定义：<code>let a = []</code></li>
-<li>使用：<code>a[0]</code></li>
-<li>赋值：<code>a[0] = 1</code></li>
-</ul>
-</li>
-<li><p>对象</p>
-<ul>
-<li>定义：<code>let a = &#123;&#125;</code></li>
-<li>使用：<code>a.b</code>（或者 <code>a[&#39;b&#39;]</code>）</li>
-<li>赋值：<code>a.b = 1</code>（或者 <code>a[&#39;b&#39;]=1</code>）</li>
-</ul>
-</li>
-</ul>
-<p>数组和对象，都可以在定义的同时初始化</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a2 = &#123; <span class="attr">b</span>: <span class="number">1</span>, <span class="attr">c</span>: <span class="number">2</span> &#125; <span class="comment">// 可以写成一行</span></span><br><span class="line"><span class="keyword">let</span> a3 = &#123; <span class="comment">// 也可以写为多行</span></span><br><span class="line">  <span class="attr">b</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">2</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li>定义：<code>function f(x) &#123; ... return y &#125;</code></li>
-<li>调用：<code>let b = f(a)</code></li>
-</ul>
-<h3 id="一些数学知识"><a href="#一些数学知识" class="headerlink" title="一些数学知识"></a>一些数学知识</h3><ul>
-<li>求余数：<code>5 % 2</code></li>
-<li>求绝对值：<code>Math.abs(x)</code></li>
-</ul>
-
-                
-                <div class="readmore">
-                    <a href="/2024/03/24/2024-03-24-javascript-1/">
                         阅读更多
                     </a>
                 </div>
